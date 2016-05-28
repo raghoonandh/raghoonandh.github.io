@@ -1,0 +1,67 @@
+
+
+.node {
+  stroke-width: 1.5px;
+}
+
+.profile
+{
+	margin-top: 20px;
+
+}
+
+.navbar
+{
+	background-color: #000;
+	color: #fff;
+}
+
+.username
+{
+	text-align: center;	
+}
+
+.faded
+{
+	opacity: 0.1;
+}
+
+.helptext
+{
+	color: #f03b20;
+}
+
+#legend
+{
+	margin-bottom: -50px
+}
+
+.footer {
+    background: #000;
+    padding: 10px 0;
+}
+
+.footer a {
+    color: #70726F;
+    font-size: 20px;
+    padding: 10px;
+    border-right: 1px solid #70726F;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.footer a:first-child {
+    border-left: 1px solid #70726F;
+}
+
+.footer a:hover {
+    color: white;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.connect
+{
+	color: #fff;
+	font-size: 14px;
+}
