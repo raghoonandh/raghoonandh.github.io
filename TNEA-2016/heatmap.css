@@ -1,16 +1,5 @@
 
 
-.node {
-  stroke-width: 1.5px;
-}
-
-.profile
-{
-	margin-top: 20px;
-    text-align: justify;
-
-}
-
 .navbar
 {
 	background-color: #000;
@@ -67,7 +56,42 @@
 	font-size: 14px;
 }
 
-.username
+#filters
 {
+    margin-top: 2em;
+}
+
+.tip
+{
+    color: red;
+}
+
+#info
+{
+    margin-top: -20px;
     text-align: justify;
+}
+
+.popup
+{
+    margin-top: 1.7em;
+    background-color: #ffffd9 !important
+    color:white !important
+
+}
+
+#course
+{
+    text-align: center;
+    margin-top: 1em
+}
+
+audio {
+    display: none;
+}
+
+.ritems
+{
+    margin-top: 40px;
+    text-align: center;
 }

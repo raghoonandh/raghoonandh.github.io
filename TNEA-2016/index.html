@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<title> TNEA HEATMAP </title>
+<meta name="keywords" content="anna university, engineering, counselling, TNAE, 2016, college, possibilities">
+ <meta name="description" content="A web app to find the possible departments & colleges for a student's cut off. Holds good for TNEA 2016">
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="../bower_components/intro.js/minified/introjs.min.css">
+<link rel="stylesheet" href="heatmap.css">
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/intro.js/minified/intro.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+         <div clas ="row">
+             <h3> TNEA HEAT MAP 2016 </h3>
+          </div>
+      </div>
+    </div>
+  </nav>
+<div class="container">
+<div class="row" data-step=1 data-intro='Know about the App. Understand how it works' id="info">
+<div class="col-md-5">
+	<h3> About the app </h3>
+	<h5>
+	 It is that time of the year, when the heat wave is taking a grip on the state and any talk about the cut off marks and counselling will bring up a heated argument in any household. This heatmap is for our protogonist, who is in the midst of all this mess with a counselling card which has a date and few numbers around it. This app is an attempt to replace the traditional way of entering your cut off marks in a website, which gives you a table with few more numbers. We are not MS excel or SQL to consume tables. After all, we are humans and we deserve better. Don't we? 
+	 </h5>
+</div>
+<div class="col-md-2"></div>
+<div class="col-md-5">
+	<h3> How it Works </h3>
+	<h5>
+	   Max of 100 seats from various departments & colleges which had closing cut off mark around that of yours from last year (2015) is shown. Eg If your cut off is 193, seats with closing cut offs varying from 195 to 193 would be shown. The color represents the probabality of getting it. Darker the blue higher the chances of getting it. Lighter the green slimmer the chances. <span class="tip"> Hover over the square to find the course-college. Click on it to find more details, and wait for a song to be played in the background based on your probability of getting that seat ;) </span>
+	 </h5>
+</div>
+</div>
+<div class="row">
+<div class="col-md-2" id='filters'>
+<label > Cut off </label>
+<input data-step=2 data-intro='Enter you cut off marks. On Default the app will load for the cut off 185.25. Guess whose it was!' type="text" class='form-control' value="185.25" id="cutoff" placeholder="Cut off">
+ 	<div class="form-group">
+        <label > Quota </label>
+        	<select data-step=3 data-intro="Select you Quota" class="form-control" id="quota">
+        <option>OC</option> 
+        <option>BC</option>
+        <option>MBC</option>
+        <option>BCM</option>  
+        <option>SCA</option>  
+        <option>SC</option>
+        <option>ST</option>
+        </select>
+        </div>
+    <input type="button" data-step=4 data-intro="Click to Plot the Heat map for your cut off marks and Quota" class="btn btn-primary" onclick="heatup()" id="calculate" value="Heat Up"></input>
+      </div>
+<div data-step=5 data-intro='Each Square is a department in a college.  1. Hover over it to Find the Department - College 2. Click on it to play a Song based upon your chances of getting a seat in that Department- College' class="col-md-7" id="heat">
+</div>
+<div class="col-md-3" id="course"></div>
+<div class="ritems">
+<h4> Related Items </h4>
+<ul> <a href="https://www.linkedin.com/pulse/data-comics-10-anna-university-remember-name-raghunandh-g-s"> Data Comics - #10 Anna University, Remember the name </a> </ul> 
+</div>
+</div>
+</div>
+<div class="row">
+<audio id="Mp3Me" autoplay autobuffer controls>
+</div>
+</div>
+</div>
+<footer class="footer" data-step=6  data-intro= "My social media accounts, Just in case if you wish to connect with me.">
+        <div class="container text-center">
+            <a href="http://www.facebook.com/raghoonandh" target="_blank"><i class="fa fa-facebook" ></i></a>
+            <a href="http://www.twitter.com/raghoonandh" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/raghoonandh" target="_blank"><i class="fa fa-linkedin"></i></a>
+        </div><!--End container-->
+    </footer><!--End footer 2-->
+
+</body>
+  <script src="../bower_components/d3/d3.min.js"></script>
+<script src="heatmap.js"></script>
