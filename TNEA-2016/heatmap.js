@@ -9,7 +9,7 @@ var heat = svg.append('svg')
 
 function computedata(cutoff, quota){
 
-d3.csv('tneacounselling.csv', function(data)
+d3.csv('tneaCounselling.csv', function(data)
 {
     data = data.filter(function(row) {
         return row[quota] >= cutoff-2 & row[quota] < cutoff+2 ;
