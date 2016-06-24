@@ -1,0 +1,16 @@
+var svg = d3.select('#emojifootball')
+			.append('svg')
+			.attr('width', 400)
+			.attr('height',600)
+				 svg.append("svg:image")
+  					.attr("xlink:href", 'img/football-field.svg')
+  					.attr("width", 400)
+ 					.attr("height", 600)
+  					.attr("x", 10)
+  					.attr("y", 10);
+				 svg.append("svg:image")
+  					.attr("xlink:href", 'img/happy.svg')
+  					.attr("width", 20)
+ 					.attr("height", 20)
+  					.attr("x", 80)
+  					.attr("y", 150);
