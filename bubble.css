@@ -1,4 +1,8 @@
-
+body
+{
+    font-family: "Varela Round";
+    font-size: 14;
+}
 
 .node {
   stroke-width: 1.5px;
@@ -17,10 +21,6 @@
 	color: #fff;
 }
 
-.username
-{
-	text-align: center;	
-}
 
 .faded
 {
@@ -70,4 +70,5 @@
 .username
 {
     text-align: justify;
+   
 }
