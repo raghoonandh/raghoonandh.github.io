@@ -23,4 +23,15 @@ function appendleftback(svg,formation,performance)
             .attr("y", h/3);
 }
 
+function appendrightback(svg,formation,performance)
+{
+           svg.append("svg:image")
+            .attr("xlink:href", 'img/'+ performance +'.svg')
+            .attr("width", 20)
+            .attr("height", 20)
+            .attr("x", function(){return formation[0]==4? w/1.33 :w/1.44 })
+            .attr("y", h/3);
+}
+
 appendleftback(svg, formation, 'good')
+appendrightback(svg, formation, 'goal')
