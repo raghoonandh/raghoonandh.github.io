@@ -1,7 +1,7 @@
 
 var fixturestable = d3.selectAll('#fixturestable')
   					  .append('svg')
-  					  .attr("viewBox", "0 0 300 600")
+  					  .attr("viewBox", "0 0 300 200")
 
 var height = 180
 d3.csv("mock.csv", function(error, data) {
