@@ -1,82 +1,3 @@
-
-var fixturestable = d3.selectAll('#fixturestable')
-  					  .append('svg')
-  					  .attr("viewBox", "0 0 300 180")
-
-                   fixturestable.append('rect')
-                              .attr('x', 70)
-                              .attr('y', 0)
-                              .attr('height',8)
-                              .attr('width',25)
-                              .attr('fill','red')
-                              .on('click', function(){ return sortgw1()}) 
-                  fixturestable.append('text')
-                               .attr('x',70)
-                               .attr('y',4)
-                               .attr('dy','0.37em')
-                               .attr('class', 'header')
-                               .text('Next GW')
-                               .on('click', function(){ return sortgw1()}) 
-                   fixturestable.append('rect')
-                              .attr('x', 100)
-                              .attr('y', 0)
-                              .attr('height',8)
-                              .attr('width',25)
-                              .attr('fill','blue')
-                              .on('click', function(){ return sortgw3()}) 
-                  fixturestable.append('text')
-                               .attr('x',100)
-                               .attr('y',4)
-                               .attr('dy','0.37em')
-                               .attr('class', 'header')
-                               .text('Next 3 GWs')
-                               .on('click', function(){ return sortgw3()}) 
-                   fixturestable.append('rect')
-                              .attr('x', 130)
-                              .attr('y', 0)
-                              .attr('height',8)
-                              .attr('width',25)
-                              .attr('fill','orange')
-                              .on('click', function(){ return sortgw6()}) 
-                  fixturestable.append('text')
-                               .attr('x',130)
-                               .attr('y',4)
-                               .attr('dy','0.37em')
-                               .attr('class', 'header')
-                               .text('Next 6 GWs')
-                               .on('click', function(){ return sortgw6()}) 
-
-
-function sortgw6(){
-    var topcirclessvg = d3.select("#fixturestable")
-  topcirclessvg.selectAll('.club').remove()
-  analysefixture('6gw')
-}
-
-
-function sortgw3(){
-    var topcirclessvg = d3.select("#fixturestable")
-  topcirclessvg.selectAll('.club').remove()
-  analysefixture('3gw')
-}
-
-
-function sortgw1(){
-    var topcirclessvg = d3.select("#fixturestable")
-  topcirclessvg.selectAll('.club').remove()
-  analysefixture('1gw')
-}
-
-analysefixture('1gw')
-
-function analysefixture(gw)
-{
-var height = 160
-
-d3.csv("mock.csv", function(error, data) {
-    // data.forEach(function(d) {
-    //     d['1gw'] = +d['1gw'];  
-    // });
 var colordict = {
     1: '#B71C1C',
     2: '#C62828',
@@ -99,11 +20,128 @@ var colordict = {
     19: '#263238',
     20: '#212121'
 } 
- 
+
 function getcolor(num)
 {
   return colordict[num]
 }
+
+
+var fixturestable = d3.selectAll('#fixturestable')
+  					  .append('svg')
+  					  .attr("viewBox", "0 0 240 180")
+
+                   fixturestable.append('rect')
+                              .attr('x', 70)
+                              .attr('y', 0)
+                              .attr('height',8)
+                              .attr('width',25)
+                              .attr('class','gw1')
+                              .on('click', function(){ return sortgw1()}) 
+                  fixturestable.append('text')
+                               .attr('x',70)
+                               .attr('y',4)
+                               .attr('dy','0.37em')
+                               .attr('class', 'header')
+                               .text('Next GW')
+                               .on('click', function(){ return sortgw1()}) 
+                   fixturestable.append('rect')
+                              .attr('x', 100)
+                              .attr('y', 0)
+                              .attr('height',8)
+                              .attr('width',25)
+                              .attr('class','gw3')
+                              .on('click', function(){ return sortgw3()}) 
+                  fixturestable.append('text')
+                               .attr('x',100)
+                               .attr('y',4)
+                               .attr('dy','0.37em')
+                               .attr('class', 'header')
+                               .text('Next 3 GWs')
+                               .on('click', function(){ return sortgw3()}) 
+                   fixturestable.append('rect')
+                              .attr('x', 130)
+                              .attr('y', 0)
+                              .attr('height',8)
+                              .attr('width',25)
+                              .attr('class','gw6')
+                              .on('click', function(){ return sortgw6()}) 
+                  fixturestable.append('text')
+                               .attr('x',130)
+                               .attr('y',4)
+                               .attr('dy','0.37em')
+                               .attr('class', 'header')
+                               .text('Next 6 GWs')
+                               .on('click', function(){ return sortgw6()}) 
+
+                 for(i=1;i<21;i++)
+                 {
+                  fixturestable.append('rect')
+                              .attr('x', i*6+20)
+                              .attr('y', 160)
+                              .attr('height',6)
+                              .attr('width',6)
+                              .attr('fill', getcolor(i))
+                              
+                 }
+
+                  fixturestable.append('text')
+                               .attr('x',20)
+                               .attr('y',170)
+                               .attr('dy','0.37em')
+                               .attr('class', 'legend')
+                               .text('Easy')
+                  fixturestable.append('text')
+                               .attr('x',135)
+                               .attr('y',170)
+                               .attr('dy','0.37em')
+                               .attr('class', 'legend')
+                               .text('Tough')
+                               .on('click', function(){ return sortgw6()}) 
+                  
+                 
+
+
+function sortgw6(){
+    var topcirclessvg = d3.select("#fixturestable")
+  topcirclessvg.selectAll('.club').remove()
+  d3.selectAll('rect').classed('faded',false)
+  d3.selectAll('.gw3, .gw1').classed('faded',true)
+  analysefixture('6gw')
+}
+
+
+function sortgw3(){
+    var topcirclessvg = d3.select("#fixturestable")
+  topcirclessvg.selectAll('.club').remove()
+  d3.selectAll('rect').classed('faded',false)
+  d3.selectAll('.gw6, .gw1').classed('faded',true)
+  analysefixture('3gw')
+}
+
+
+function sortgw1(){
+    var topcirclessvg = d3.select("#fixturestable")
+  topcirclessvg.selectAll('.club').remove()
+  d3.selectAll('rect').classed('faded',false)
+  d3.selectAll('.gw3, .gw6').classed('faded',true)
+  analysefixture('1gw')
+}
+
+analysefixture('1gw')
+d3.selectAll('.gw3, .gw6').classed('faded',true)
+
+
+
+function analysefixture(gw)
+{
+var height = 150
+
+d3.csv("gameweek.csv", function(error, data) {
+    // data.forEach(function(d) {
+    //     d['1gw'] = +d['1gw'];  
+    // });
+ 
 
     data.sort(function(a,b) {
           return d3.ascending(+a[gw], +b[gw]);
@@ -111,7 +149,7 @@ function getcolor(num)
 
     var yScale = d3.scale.linear()
                    		 .domain([0, d3.max(data, function (d) { return +d['1gw']})])
-                   		 .rangeRound([20, height]);
+                   		 .rangeRound([10, height]);
     var x = 20
     var x1 = 80
 
@@ -166,7 +204,7 @@ function getcolor(num)
 		                    			  .attr('x',x)
 		                    			  .attr('y', function(d){return yScale(parseInt(d[gw]))+2})
 		                    			  .attr('dy','0.40em')
-		                    			  .attr('fill','steelblue')
+		                    			  .attr('fill','#424242')
 		                    			  .attr('class','club')
                                 .attr('opacity', 0)
 		                    			  .text(function(d){return d.club})

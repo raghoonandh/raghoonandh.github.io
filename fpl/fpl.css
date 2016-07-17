@@ -10,5 +10,32 @@
 	font-size: 4.5px;
 	text-align: center;
 	margin-top: 5px;
+	fill: #fff;
+	
+}
+
+.deepstroke
+{
+	stroke: #F44336;
+	stroke-width: 1;
+    stroke-dasharray: 5,10 
+}
+
+.gw1, .gw3, .gw6
+{
+	fill: #BF360C;
+}
+
+.faded
+{
+	opacity: 0.5;
+}
+
+.legend
+{
+	font-size: 4.5px;
+	text-align: center;
+	margin-top: 5px;
+	
 	
 }
