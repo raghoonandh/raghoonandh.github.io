@@ -77,8 +77,33 @@ d3.csv("mock.csv", function(error, data) {
     // data.forEach(function(d) {
     //     d['1gw'] = +d['1gw'];  
     // });
+var colordict = {
+    1: '#B71C1C',
+    2: '#C62828',
+    3: '#D32F2F',
+    4: '#E53935',
+    5: '#F44336',
+    6: '#EF5350',
+    7: '#E57373',
+    8: '#EF9A9A',
+    9: '#FFCDD2',
+    10: '#FFEBEE',
+    11: '#CFD8DC',
+    12: '#B0BEC5',
+    13: '#90A4AE',
+    14 : '#78909C',
+    15: '#607D8B',
+    16: '#546E7A',
+    17: '#455A64',
+    18: '#37474F',
+    19: '#263238',
+    20: '#212121'
+} 
  
-
+function getcolor(num)
+{
+  return colordict[num]
+}
 
     data.sort(function(a,b) {
           return d3.ascending(+a[gw], +b[gw]);
@@ -100,36 +125,39 @@ d3.csv("mock.csv", function(error, data) {
 		                    				.attr('y',function(d,i){return gw =='1gw'? 10: yScale(parseInt(d['3gw'])) })
 		                    				.attr('height', 5)
 		                    				.attr('width', 5)
-		                    				.attr('fill', "tomato")
+		                    				.attr('fill', function(d){return getcolor(+d['1gw'])})
 
                                 rectsgw1.transition()
                                 .delay(function(d,i){return i*40})
                                 .duration(2000)
-                                .attr("y", function(d){ return yScale(parseInt(d['1gw'])) })
+                                .attr("y", function(d){ return yScale(parseInt(d[gw])) })
+                                // .attr('fill', function(d){return getcolor(+d['1gw'])})
 
                              var rectsgw3 = groups.append("rect")
                                 .attr('x',x1+30)
                                 .attr('y', function(d,i){return gw =='1gw'? 10: yScale(parseInt(d['1gw'])) })
                                 .attr('height', 5)
                                 .attr('width', 5)
-                                .attr('fill', "teal")
+                                 .attr('fill', function(d){return getcolor(+d['3gw'])})
 
                                 rectsgw3.transition()
                                 .delay(function(d,i){return i*40})
                                 .duration(2000)
-                                .attr("y", function(d){ return yScale(parseInt(d['3gw'])) })
+                                .attr("y", function(d){ return yScale(parseInt(d[gw])) })
+                                
                              
                              var rectsgw6 = groups.append("rect")
                                 .attr('x',x1+60)
                                 .attr('y', function(d,i){return gw =='1gw'? 10: yScale(parseInt(d['1gw'])) })
                                 .attr('height', 5)
                                 .attr('width', 5)
-                                .attr('fill', "darkorange")
+                                .attr('fill', function(d){return getcolor(d['6gw'])})
 
                                 rectsgw6.transition()
                                 .delay(function(d,i){return i*40})
                                 .duration(2000)
-                                .attr("y", function(d){ return yScale(parseInt(d['6gw'])) })
+                                .attr("y", function(d){ return yScale(parseInt(d[gw])) })
+                                // .attr('fill', function(d){return getcolor(d['6gw'])})
 
 
 
