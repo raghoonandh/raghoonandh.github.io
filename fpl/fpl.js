@@ -111,6 +111,13 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('dy','0.37em')
                                .attr('class', 'legend')
                                .text('Tough')
+
+                fixturestable.append('text')
+                               .attr('x',20)
+                               .attr('y',4)
+                               .attr('dy','0.37em')
+                               .attr('class', 'gwheader')
+                               .text('gameweek 1-6 ')
                             
                   
                  

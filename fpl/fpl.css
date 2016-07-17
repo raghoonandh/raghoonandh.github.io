@@ -1,3 +1,8 @@
+.navbar
+{
+	background-color: #BF360C;
+}
+
 .club
 {
 	font-size: 5px;
@@ -35,10 +40,20 @@
 {
 	font-size: 4.5px;
 	text-align: center;
-	margin-top: 5px;
-	
-	
+	margin-top: 5px;	
 }
+
+.gwheader
+{
+	font-size: 6px;
+	text-align: center;
+	margin-top: 5px;
+	font-weight: bold;	
+	fill: #BF360C;
+
+
+}
+
 
 .help
 {
@@ -75,6 +90,25 @@
 }
 
 .footer {
-    background: #000;
-    padding: 15px 0;
+    background: #212121;
+    padding: 10px 0;
+}
+
+.footer a {
+    color: #70726F;
+    font-size: 20px;
+    padding: 10px;
+    border-right: 1px solid #70726F;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.footer a:first-child {
+    border-left: 1px solid #70726F;
+}
+
+.footer a:hover {
+    color: #BF360C;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
 }
