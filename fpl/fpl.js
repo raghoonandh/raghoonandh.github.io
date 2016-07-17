@@ -39,7 +39,7 @@ var fixturestable = d3.selectAll('#fixturestable')
                               .attr('class','gw1')
                               .on('click', function(){ return sortgw1()}) 
                   fixturestable.append('text')
-                               .attr('x',70)
+                               .attr('x',72)
                                .attr('y',4)
                                .attr('dy','0.37em')
                                .attr('class', 'header')
@@ -73,6 +73,20 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('class', 'header')
                                .text('Next 6 GWs')
                                .on('click', function(){ return sortgw6()}) 
+                   fixturestable.append('line')
+                               .attr('x1',160)
+                               .attr('y1',4)
+                               .attr('x2',170)
+                               .attr('y2', 4)
+                               .attr('class', 'deepstroke')
+                                
+                  fixturestable.append('text')
+                               .attr('x',172)
+                               .attr('y',4)
+                               .attr('dy','0.37em')
+                               .attr('class', 'help')
+                               .text('Click to Sort')
+                               
 
                  for(i=1;i<21;i++)
                  {
@@ -97,7 +111,7 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('dy','0.37em')
                                .attr('class', 'legend')
                                .text('Tough')
-                               .on('click', function(){ return sortgw6()}) 
+                            
                   
                  
 

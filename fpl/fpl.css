@@ -17,8 +17,8 @@
 .deepstroke
 {
 	stroke: #F44336;
-	stroke-width: 1;
-    stroke-dasharray: 5,10 
+	stroke-width: 0.5;
+    
 }
 
 .gw1, .gw3, .gw6
@@ -39,3 +39,14 @@
 	
 	
 }
+
+.help
+{
+	font-size: 4.5px;
+	text-align: center;
+	margin-top: 5px;
+	fill: red;
+	
+	
+}
+
