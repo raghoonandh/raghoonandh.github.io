@@ -112,3 +112,21 @@
     -webkit-transition: all .5s ease;
     transition: all .5s ease;
 }
+
+.fixtures
+{
+	font-size: 5px;
+	text-align: center;
+	margin-top: 5px;
+	fill: #000;
+}
+
+.clubname
+{
+	font-size: 5px;
+	text-align: center;
+	margin-top: 5px;
+    fill: #BF360C;
+    font-weight: bold;
+
+}

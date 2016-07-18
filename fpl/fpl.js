@@ -79,6 +79,12 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('x2',170)
                                .attr('y2', 4)
                                .attr('class', 'deepstroke')
+                   fixturestable.append('line')
+                               .attr('x1',146)
+                               .attr('y1',19)
+                               .attr('x2',153)
+                               .attr('y2', 19)
+                               .attr('class', 'deepstroke')
                                 
                   fixturestable.append('text')
                                .attr('x',172)
@@ -119,6 +125,12 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('class', 'gwheader')
                                .text('gameweek 1-6 ')
                             
+                fixturestable.append('text')
+                               .attr('x',155)
+                               .attr('y',19)
+                               .attr('dy','0.37em')
+                               .attr('class', 'help')
+                               .text('click on rect for next 6 fixtures')
                   
                  
 
@@ -158,7 +170,7 @@ function analysefixture(gw)
 {
 var height = 150
 
-d3.csv("gameweek.csv", function(error, data) {
+d3.csv("gameweekwithfixtures.csv", function(error, data) {
     // data.forEach(function(d) {
     //     d['1gw'] = +d['1gw'];  
     // });
@@ -185,6 +197,7 @@ d3.csv("gameweek.csv", function(error, data) {
 		                    				.attr('height', 5)
 		                    				.attr('width', 5)
 		                    				.attr('fill', function(d){return getcolor(+d['1gw'])})
+                                .on('click',function(d){return rectclick(d)})
 
                                 rectsgw1.transition()
                                 .delay(function(d,i){return i*40})
@@ -198,6 +211,8 @@ d3.csv("gameweek.csv", function(error, data) {
                                 .attr('height', 5)
                                 .attr('width', 5)
                                  .attr('fill', function(d){return getcolor(+d['3gw'])})
+                                 .on('click',function(d){return rectclick(d)})
+                                 
 
                                 rectsgw3.transition()
                                 .delay(function(d,i){return i*40})
@@ -211,6 +226,7 @@ d3.csv("gameweek.csv", function(error, data) {
                                 .attr('height', 5)
                                 .attr('width', 5)
                                 .attr('fill', function(d){return getcolor(d['6gw'])})
+                                .on('click',function(d){return rectclick(d)})
 
                                 rectsgw6.transition()
                                 .delay(function(d,i){return i*40})
@@ -236,7 +252,29 @@ d3.csv("gameweek.csv", function(error, data) {
                                 .duration(2000)
                                 .attr("opacity",1)
 
-
+function rectclick(d){
+   var topcirclessvg = d3.select("#fixturestable")
+  topcirclessvg.selectAll('.fixtures, .clubname').remove()
+                  fixturestable.append('text')
+                               .attr('x',160)
+                               .attr('y',30)
+                               .attr('dy','0.37em')
+                               .attr('class', 'fixtures')
+                               .attr('class','clubname')
+                               .text(d['club'])
+   for(i=1;i<7;i++)
+   {
+ 
+    var fixtures = d['gw'+i.toString()] + ' (' + d['ha'+i.toString()]    + ')'
+                  fixturestable.append('text')
+                               .attr('x',160)
+                               .attr('y',10*i+30)
+                               .attr('dy','0.37em')
+                               .attr('class', 'fixtures')
+                               .text(fixtures)
+    console.log(fixtures)
+   }
+}
 
 });
 
