@@ -130,7 +130,7 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('y',19)
                                .attr('dy','0.37em')
                                .attr('class', 'help')
-                               .text('click squares for next 6 fixtures')
+                               .text('click on squares for next 6 fixtures')
 
 
                  
