@@ -59,7 +59,7 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('class', 'header')
                                .text('Next 3 GWs')
                                .on('click', function(){ return sortgw3()}) 
-                   fixturestable.append('rect')
+   var next6gw = fixturestable.append('rect')
                               .attr('x', 130)
                               .attr('y', 0)
                               .attr('height',8)
@@ -79,12 +79,12 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('x2',170)
                                .attr('y2', 4)
                                .attr('class', 'deepstroke')
-                   fixturestable.append('line')
-                               .attr('x1',146)
-                               .attr('y1',19)
-                               .attr('x2',153)
-                               .attr('y2', 19)
-                               .attr('class', 'deepstroke')
+                   // fixturestable.append('line')
+                   //             .attr('x1',146)
+                   //             .attr('y1',19)
+                   //             .attr('x2',153)
+                   //             .attr('y2', 19)
+                   //             .attr('class', 'deepstroke')
                                 
                   fixturestable.append('text')
                                .attr('x',172)
@@ -125,14 +125,31 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('class', 'gwheader')
                                .text('gameweek 1-6 ')
                             
-                fixturestable.append('text')
+              var helptext =  fixturestable.append('text')
                                .attr('x',155)
                                .attr('y',19)
                                .attr('dy','0.37em')
                                .attr('class', 'help')
-                               .text('click on rect for next 6 fixtures')
-                  
+                               .text('click squares for next 6 fixtures')
+
+
                  
+for(j=0;j<21;j++)
+                { 
+              
+                 next6gw.transition()
+                        .delay(j*400)
+                        .duration(400)
+                        .attr("x",function(){return j%2==0? 130:140 })
+
+                helptext.transition()
+                        .delay(j*400)
+                        .duration(400)
+                        .attr("x",function(){return j%2==0? 155:150 })
+                        .attr('opacity',function(){return j==20?0:1 })
+
+                        
+                }
 
 
 function sortgw6(){
@@ -234,9 +251,7 @@ d3.csv("gameweekwithfixtures.csv", function(error, data) {
                                 .attr("y", function(d){ return yScale(parseInt(d[gw])) })
                                 // .attr('fill', function(d){return getcolor(d['6gw'])})
 
-
-
-
+                                
 		                var clubs =  groups.append('text')
 		                    			  .attr('x',x)
 		                    			  .attr('y', function(d){return yScale(parseInt(d[gw]))+2})
