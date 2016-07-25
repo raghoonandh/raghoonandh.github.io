@@ -1,0 +1,21 @@
+club,1gw,3gw,6gw,gw1,gw2,gw3,gw4,gw5,gw6,ha1,ha2,ha3,ha4,ha5,ha6,gw1-avggoals,gw2-avggoals,gw3-avggoals,gw4-avggoals,gw5-avggoals,gw6-avggoals
+Tottenham Hotspur,10,8,1,Everton,Crystal Palace,Liverpool,Stoke City,Sunderland,Middlesbrough,A,H,H,A,H,A,1.88,1.83,3.0,2.81,2.69,3.5
+Crystal Palace,7,11,2,West Bromwich Albion,Tottenham Hotspur,AFC Bournemouth,Middlesbrough,Stoke City,Sunderland,H,A,H,A,H,A,3.17,1.83,1.5,-1.0,2.5,3.0
+Everton,18,16,3,Tottenham Hotspur,West Bromwich Albion,Stoke City,Sunderland,Middlesbrough,AFC Bournemouth,H,A,H,A,H,A,1.88,2.07,2.44,2.63,1.5,4.5
+West Bromwich Albion,6,1,4,Crystal Palace,Everton,Middlesbrough,AFC Bournemouth,West Ham United,Stoke City,A,H,H,A,H,A,3.17,2.07,2.0,2.5,3.0,1.64
+Middlesbrough,12,3,5,Stoke City,Sunderland,West Bromwich Albion,Crystal Palace,Everton,Tottenham Hotspur,H,A,A,H,A,H,2.0,2.0,2.0,-1.0,1.5,3.5
+Stoke City,2,9,6,Middlesbrough,Manchester City,Everton,Tottenham Hotspur,Crystal Palace,West Bromwich Albion,A,H,A,H,A,H,2.0,2.25,2.44,2.81,2.5,1.64
+Manchester City,4,10,7,Sunderland,Stoke City,West Ham United,Manchester United,AFC Bournemouth,Swansea City,H,A,H,A,H,A,3.19,2.25,2.71,2.88,5.0,2.8
+Leicester City,1,7,8,Hull City,Arsenal,Swansea City,Liverpool,Burnley,Manchester United,A,H,H,A,H,A,0.5,3.75,2.75,2.75,2.5,4.0
+Burnley,9,12,9,Swansea City,Liverpool,Chelsea,Hull City,Leicester City,Watford,H,A,A,H,A,H,1.0,2.75,3.0,2.25,2.5,-1.0
+West Ham United,11,13,10,Chelsea,AFC Bournemouth,Manchester City,Watford,West Bromwich Albion,Southampton,A,H,A,H,A,H,2.57,5.5,2.71,3.0,3.0,2.38
+Manchester United,5,2,11,AFC Bournemouth,Southampton,Hull City,Manchester City,Watford,Leicester City,A,H,A,H,A,H,3.5,2.75,3.5,2.88,2.0,4.0
+Chelsea,14,5,12,West Ham United,Watford,Burnley,Swansea City,Liverpool,Arsenal,H,A,H,A,H,A,2.57,2.0,3.0,2.9,2.5,2.75
+Swansea City,3,4,13,Burnley,Hull City,Leicester City,Chelsea,Southampton,Manchester City,A,H,A,H,A,H,1.0,2.0,2.75,2.9,1.5,2.8
+Sunderland,17,14,14,Manchester City,Middlesbrough,Southampton,Everton,Tottenham Hotspur,Crystal Palace,A,H,A,H,A,H,3.19,2.0,2.88,2.63,2.69,3.0
+Arsenal,13,18,15,Liverpool,Leicester City,Watford,Southampton,Hull City,Chelsea,H,A,A,H,A,H,3.25,3.75,3.5,2.75,3.25,2.75
+Southampton,8,6,16,Watford,Manchester United,Sunderland,Arsenal,Swansea City,West Ham United,H,A,H,A,H,A,1.0,2.75,2.88,2.75,1.5,2.38
+AFC Bournemouth,16,15,17,Manchester United,West Ham United,Crystal Palace,West Bromwich Albion,Manchester City,Everton,H,A,A,H,A,H,3.5,5.5,1.5,2.5,5.0,4.5
+Liverpool,19,17,18,Arsenal,Burnley,Tottenham Hotspur,Leicester City,Chelsea,Hull City,A,H,A,H,A,H,3.25,2.75,3.0,2.75,2.5,2.75
+Watford,15,19,19,Southampton,Chelsea,Arsenal,West Ham United,Manchester United,Burnley,A,H,H,A,H,A,1.0,2.0,3.5,3.0,2.0,-1.0
+Hull City,20,20,20,Leicester City,Swansea City,Manchester United,Burnley,Arsenal,Liverpool,H,A,H,A,H,A,0.5,2.0,3.5,2.25,3.25,2.75

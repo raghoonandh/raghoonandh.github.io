@@ -121,9 +121,46 @@
 	fill: #000;
 }
 
+.avggoals
+{
+	font-size: 4px;
+	text-align: center;
+	margin-top: 5px;
+	fill: #000;
+}
+
+.defense
+{
+	font-size: 4.5px;
+	text-align: center;
+	margin-top: 5px;
+	fill: #f00;
+	font-weight: bold;
+}
+
+
+.offense
+{
+	font-size: 4.5px;
+	text-align: center;
+	font-weight: bold;
+	margin-top: 5px;
+	fill: #43a2ca;
+}
+
 .clubname
 {
 	font-size: 5px;
+	text-align: center;
+	margin-top: 5px;
+    fill: #BF360C;
+    font-weight: bold;
+
+}
+
+.avgheader
+{
+	font-size: 4px;
 	text-align: center;
 	margin-top: 5px;
     fill: #BF360C;

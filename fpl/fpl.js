@@ -187,7 +187,7 @@ function analysefixture(gw)
 {
 var height = 150
 
-d3.csv("gameweekwithfixtures.csv", function(error, data) {
+d3.csv("gameweekwithavggoals.csv", function(error, data) {
     // data.forEach(function(d) {
     //     d['1gw'] = +d['1gw'];  
     // });
@@ -269,26 +269,80 @@ d3.csv("gameweekwithfixtures.csv", function(error, data) {
 
 function rectclick(d){
    var topcirclessvg = d3.select("#fixturestable")
-  topcirclessvg.selectAll('.fixtures, .clubname').remove()
+  topcirclessvg.selectAll('.fixtures, .clubname, .avggoals, .avgheader, .offense, .defense').remove()
                   fixturestable.append('text')
-                               .attr('x',160)
+                               .attr('x',165)
                                .attr('y',30)
                                .attr('dy','0.37em')
                                .attr('class', 'fixtures')
                                .attr('class','clubname')
                                .text(d['club'])
+
+                  fixturestable.append('text')
+                               .attr('x',150)
+                               .attr('y',30)
+                               .attr('dy','0.37em')
+                               .attr('class','avgheader')
+                               .text('Avg G')
+
+                  fixturestable.append('text')
+                               .attr('x',150)
+                               .attr('y',100)
+                               .attr('dy','0.37em')
+                               .attr('class','avgheader')
+                               .text('Avg G - Average goals for the match')
+
+                      fixturestable.append('text')
+                               .attr('x',150)
+                               .attr('y',105)
+                               .attr('dy','0.37em')
+                               .attr('class','avgheader')
+                               .text('Based on Last 8 Seasons Data')
+
+                               
+
    for(i=1;i<7;i++)
    {
  
     var fixtures = d['gw'+i.toString()] + ' (' + d['ha'+i.toString()]    + ')'
                   fixturestable.append('text')
-                               .attr('x',160)
+                               .attr('x',165)
                                .attr('y',10*i+30)
                                .attr('dy','0.37em')
                                .attr('class', 'fixtures')
                                .text(fixtures)
-    console.log(fixtures)
+
+    var avggoals = d['gw'+i.toString()+'-avggoals']
+    if (avggoals == -1)
+    {
+      avggoals = 'NA'
+    }
+                  fixturestable.append('text')
+                               .attr('x',150)
+                               .attr('y',10*i+30)
+                               .attr('dy','0.37em')
+                               .attr('class', function(){return getgoalclass(avggoals)})
+                               .text(avggoals)
+ 
    }
+
+   function getgoalclass(goals)
+   {
+    if (goals<2)
+    {
+      return 'defense'
+    }
+    else if (goals > 3)
+    {
+      return 'offense'
+    }
+    else
+    {
+      return 'avggoals'
+    }
+
+   }
+
 }
 
 });
