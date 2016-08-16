@@ -187,7 +187,7 @@ function analysefixture(gw)
 {
 var height = 150
 
-d3.csv("gameweekwithavggoals.csv", function(error, data) {
+d3.csv("gameweek2.csv", function(error, data) {
     // data.forEach(function(d) {
     //     d['1gw'] = +d['1gw'];  
     // });
@@ -300,11 +300,11 @@ function rectclick(d){
                                .text('Based on Last 8 Seasons Data')
 
                                
-
+   var gw = 1
    for(i=1;i<7;i++)
    {
  
-    var fixtures = d['gw'+i.toString()] + ' (' + d['ha'+i.toString()]    + ')'
+    var fixtures = d['gw'+(i+1).toString()] + ' (' + d['ha'+(i+gw).toString()]    + ')'
                   fixturestable.append('text')
                                .attr('x',165)
                                .attr('y',10*i+30)
@@ -312,7 +312,7 @@ function rectclick(d){
                                .attr('class', 'fixtures')
                                .text(fixtures)
 
-    var avggoals = d['gw'+i.toString()+'-avggoals']
+    var avggoals = d['gw'+(i+gw).toString()+'-avggoals']
     if (avggoals == -1)
     {
       avggoals = 'NA'
