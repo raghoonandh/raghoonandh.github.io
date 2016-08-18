@@ -10,3 +10,33 @@ color: #fff;
 color: #fff;
 
 }
+
+body
+{
+	font-family: Inconsolata;
+}
+
+.relegation
+{
+	fill: #E34043;
+}
+
+.championsleague
+{
+	fill: #006d2c;
+}
+
+.average
+{
+	fill: #08519c;
+}
+
+.player
+{
+ fill: #fff;
+}
+
+.ptsbar
+{
+	fill: #F9AC12;
+}
