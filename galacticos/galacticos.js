@@ -17,6 +17,37 @@ d3.csv("galacticos.csv", function(error, data) {
                               .data(data)
                               .enter()
 
+     var header  =   leaguetable.append('g')
+
+                     header.append('rect')
+                           .attr('x', 20)
+                           .attr('y', 0)
+                           .attr('height', 20)
+                           .attr('width', 350)
+                           .attr('class', 'relegation' )
+
+                           header.append('text')
+                          .attr('x', 50)
+                          .attr('y', 10)
+                          .attr('dy', '0.37em')
+                          .text('Player')
+                          .attr('class', 'header')
+
+                          header.append('text')
+                          .attr('x', 200)
+                          .attr('y', 10)
+                          .attr('dy', '0.37em')
+                          .text('Gameweek')
+                          .classed('header', true)
+
+                          header.append('text')
+                          .attr('x', 310)
+                          .attr('y', 10)
+                          .attr('dy', '0.37em')
+                          .text('Total')
+                          .attr('class', 'header')
+
+
         var rects = groups.append('rect')
                           .attr('x', 20)
                           .attr('y', function(d,i){return i*25 + 25})
