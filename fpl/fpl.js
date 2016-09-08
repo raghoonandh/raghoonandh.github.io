@@ -123,7 +123,7 @@ var fixturestable = d3.selectAll('#fixturestable')
                                .attr('y',4)
                                .attr('dy','0.37em')
                                .attr('class', 'gwheader')
-                               .text('gameweek 1-6 ')
+                               .text('gameweek 4-9 ')
                             
               var helptext =  fixturestable.append('text')
                                .attr('x',155)
@@ -187,7 +187,7 @@ function analysefixture(gw)
 {
 var height = 150
 
-d3.csv("gameweek2.csv", function(error, data) {
+d3.csv("gameweek4.csv", function(error, data) {
     // data.forEach(function(d) {
     //     d['1gw'] = +d['1gw'];  
     // });
@@ -300,11 +300,11 @@ function rectclick(d){
                                .text('Based on Last 8 Seasons Data')
 
                                
-   var gw = 1
+   var gw = 3
    for(i=1;i<7;i++)
    {
  
-    var fixtures = d['gw'+(i+1).toString()] + ' (' + d['ha'+(i+gw).toString()]    + ')'
+    var fixtures = d['gw'+(i+gw).toString()] + ' (' + d['ha'+(i+gw).toString()]    + ')'
                   fixturestable.append('text')
                                .attr('x',165)
                                .attr('y',10*i+30)
