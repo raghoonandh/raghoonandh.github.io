@@ -188,11 +188,7 @@ function analysefixture(gw)
 var height = 150
 
 d3.csv("gameweek4.csv", function(error, data) {
-    // data.forEach(function(d) {
-    //     d['1gw'] = +d['1gw'];  
-    // });
- 
-
+    
     data.sort(function(a,b) {
           return d3.ascending(+a[gw], +b[gw]);
       });

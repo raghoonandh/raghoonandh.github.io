@@ -1,0 +1,44 @@
+{
+  "nodes": [
+    {"id": "Cech", "group": 1},
+    {"id": "Nacho", "group": 2},
+    {"id": "Mustafi", "group": 2},
+    {"id": "Koscieiny", "group": 2},
+    {"id": "Bellerin", "group": 2},
+    {"id": "Coquelin", "group": 3},
+    {"id": "Ozil", "group": 3},
+    {"id": "Carzola", "group": 3},
+    {"id": "Iwobi", "group": 3},
+    {"id": "Sanchez", "group": 3},
+    {"id": "Giroud", "group": 4}
+
+  ],
+  "links": [
+    {"source": "Nacho", "target": "Cech", "value": 7},
+    {"source": "Mustafi", "target": "Cech", "value": 8},
+    {"source": "Koscieiny", "target": "Cech", "value": 10},
+    {"source": "Koscieiny", "target": "Mustafi", "value": 6},
+    {"source": "Bellerin", "target": "Cech", "value": 8},
+    {"source": "Coquelin", "target": "Cech", "value": 4},
+    {"source": "Ozil", "target": "Cech", "value": 1},
+    {"source": "Carzola", "target": "Cech", "value": 21},
+    {"source": "Iwobi", "target": "Giroud", "value": 22},
+    {"source": "Ozil", "target": "Giroud", "value": 10},
+    {"source": "Ozil", "target": "Koscieiny", "value": 3},
+    {"source": "Ozil", "target": "Sanchez", "value": 31},
+    {"source": "Ozil", "target": "Carzola", "value": 25},
+    {"source": "Giroud", "target": "Ozil", "value": 11},
+    {"source": "Sanchez", "target": "Giroud", "value": 12},
+    {"source": "Carzola", "target": "Giroud", "value": 22},
+    {"source": "Coquelin", "target": "Ozil", "value": 14},
+    {"source": "Coquelin", "target": "Carzola", "value": 23},
+    {"source": "Coquelin", "target": "Sanchez", "value": 32},
+    {"source": "Coquelin", "target": "Giroud", "value": 4},
+    {"source": "Giroud", "target": "Sanchez", "value": 17},
+    {"source": "Giroud", "target": "Carzola", "value": 11},
+    {"source": "Giroud", "target": "Iwobi", "value": 8}
+
+
+
+  ]
+}
