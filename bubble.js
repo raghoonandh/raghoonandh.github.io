@@ -168,7 +168,7 @@ $('body').on('click', unhighlightcat)
 function circleclick()
 {
   var status = d3.select(this).attr('status')
-  ohSnap(status, {color: 'red'});
+  ohSnap(status, {color: 'red', 'duration':'5000'});
   var cat = d3.select(this).attr('datacat')
    highlightcat(cat)
 }
