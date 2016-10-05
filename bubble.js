@@ -48,6 +48,7 @@ setTimeout(function(){
       .attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; })
       .attr("r", 6)
+      .attr('status', function(d,i){ return row[i].status } )
       .attr('datacat', function(d,i){ return row[i].category } )
       .style("fill", function(d, i){ return getcolor(row[i].category) })
       .on("mouseover", mouseover)
@@ -155,7 +156,7 @@ function highlightcat(d)
 
 function unhighlightcat()
 {
-  console.log('body');
+  
   d3.selectAll('.node')
     .classed('faded', false)
 }
@@ -166,6 +167,8 @@ $('body').on('click', unhighlightcat)
 
 function circleclick()
 {
+  var status = d3.select(this).attr('status')
+  ohSnap(status, {color: 'red'});
   var cat = d3.select(this).attr('datacat')
    highlightcat(cat)
 }

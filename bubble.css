@@ -72,3 +72,36 @@ body
     text-align: justify;
    
 }
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #eed3d7;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 0px;
+  right: 21px;
+  /* Each alert has its own width */
+  float: right;
+  clear: right;
+  background-color: white;
+}
+
+.alert-red {
+  color: white;
+  background-color: #DA4453;
+}
+.alert-green {
+  color: white;
+  background-color: #37BC9B;
+}
+
+.alert-orange {
+  color:white;
+  background-color: #E9573F;
+}
+
+.alert-blue {
+  color: white;
+  background-color: #4A89DC;
+}

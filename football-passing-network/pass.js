@@ -86,6 +86,7 @@ d3.json("pass.json", function(error, graph) {
     .enter().append("circle")
       .attr("r", 10)
       .attr("class", function(d) { return color[parseInt(d.group) - 1]; })
+      .attr('title', function(d) { return d.id; });
       .classed('playernode', true)
       .call(d3.drag()
           .on("start", dragstarted)
@@ -93,9 +94,15 @@ d3.json("pass.json", function(error, graph) {
           .on("end", dragended));
 
 
+ $('body')
+  .tooltip({
+  selector: '[title]',
+  container: 'body',
+  html: true
+  });
 
-  node.append("title")
-      .text(function(d) { return d.id; });
+  // node.append("title")
+  //     .text
 
   simulation
       .nodes(graph.nodes)
@@ -173,3 +180,4 @@ function dragended(d) {
     .classed('faded', false)
   }
 }
+
