@@ -86,7 +86,7 @@ d3.json("pass.json", function(error, graph) {
     .enter().append("circle")
       .attr("r", 10)
       .attr("class", function(d) { return color[parseInt(d.group) - 1]; })
-      .attr('title', function(d) { return d.id; });
+      .attr('title', function(d) { return d.id; })
       .classed('playernode', true)
       .call(d3.drag()
           .on("start", dragstarted)
