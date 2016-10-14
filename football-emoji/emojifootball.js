@@ -16,13 +16,25 @@ var svg = d3.select('#emojifootball')
   					.attr("y", 0);
 
 
+var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
+
+
+
 
            svg.append("svg:image")
             .attr("xlink:href", 'img/good.svg')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x",  150 )
-            .attr("y", h/4);
+            .attr("y", h/4)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('Number of Tackels Won/Attempted 5/6')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
+
+
 
             svg.append('text')
             .attr("x",  140 )
@@ -37,7 +49,13 @@ var svg = d3.select('#emojifootball')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x", 450 )
-            .attr("y", h/4);
+            .attr("y", h/4)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('95% Successful clearances')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
 
              svg.append('text')
             .attr("x",  440 )
@@ -51,7 +69,13 @@ var svg = d3.select('#emojifootball')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x", 250 )
-            .attr("y", h/4);
+            .attr("y", h/4)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('4 fouls commited')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
 
             svg.append('text')
             .attr("x",  240 )
@@ -65,7 +89,13 @@ var svg = d3.select('#emojifootball')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x", 350 )
-            .attr("y", h/4);
+            .attr("y", h/4)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('Yellow Carded')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
 
             svg.append('text')
             .attr("x",  340 )
@@ -79,7 +109,14 @@ var svg = d3.select('#emojifootball')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x",  150 )
-            .attr("y", h/2);
+            .attr("y", h/2)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('Assisted a goal')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
+         
 
           svg.append('text')
             .attr("x",  140 )
@@ -94,7 +131,13 @@ var svg = d3.select('#emojifootball')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x", 450 )
-            .attr("y", h/2);
+            .attr("y", h/2)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('18 Successful Dribbles')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
 
             svg.append('text')
             .attr("x",  440 )
@@ -108,7 +151,13 @@ var svg = d3.select('#emojifootball')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x", 250 )
-            .attr("y", h/2);
+            .attr("y", h/2)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('Missed Penalty')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
 
           svg.append('text')
             .attr("x",  240 )
@@ -122,7 +171,13 @@ var svg = d3.select('#emojifootball')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x", 350 )
-            .attr("y", h/2);
+            .attr("y", h/2)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('Injured')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
 
         svg.append('text')
             .attr("x",  340 )
@@ -136,7 +191,13 @@ var svg = d3.select('#emojifootball')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x", 250 )
-            .attr("y", h/1.5);
+            .attr("y", h/1.5)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('0 Shots on target')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
 
           svg.append('text')
             .attr("x",  240 )
@@ -151,7 +212,13 @@ var svg = d3.select('#emojifootball')
             .attr("width", 20)
             .attr("height", 20)
             .attr("x", 350 )
-            .attr("y", h/1.5);
+            .attr("y", h/1.5)
+            .on("mouseover", function() { 
+            divTooltip.style("left", (d3.event.pageX-20 )+"px");
+            divTooltip.style("top", (d3.event.pageY-35)+"px");
+            divTooltip.style("display", "inline-block");
+            divTooltip.html('Goal Scorer')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
 
       svg.append('text')
             .attr("x",  340 )
