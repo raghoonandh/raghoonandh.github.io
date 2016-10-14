@@ -13,6 +13,7 @@ svg.append('circle')
   .attr('cy', 10)
   .attr('r',10)
   .attr('class', 'golie')
+  .on('click', function(){filtergolie(1)})
 
 
 svg.append('text')
@@ -26,6 +27,7 @@ svg.append('circle')
   .attr('cy', 10)
   .attr('r',10)
   .attr('class', 'defender')
+  .on('click', function(){filtergolie(2)})
 
 svg.append('text')
   .attr('x',110)
@@ -38,6 +40,7 @@ svg.append('text')
   .attr('cy', 10)
   .attr('r',10)
   .attr('class', 'midfield')
+  .on('click', function(){filtergolie(3)})
 
   svg.append('text')
   .attr('x',210)
@@ -50,6 +53,7 @@ svg.append('text')
   .attr('cy', 10)
   .attr('r',10)
   .attr('class', 'attack')
+  .on('click', function(){filtergolie(4)})
 
   svg.append('text')
   .attr('x',310)
@@ -62,6 +66,31 @@ var simulation = d3.forceSimulation()
     .force("charge", d3.forceManyBody())
     .force("center", d3.forceCenter(width / 2, height / 2.6)) 
 
+function filtergolie(id)
+{
+  target = []
+  d3.selectAll('line')
+    .classed('faded', function(d){
+      if(d.source.group == id)
+      {
+         target.push(d.target.id)
+      }
+      if(d.target.group == id)
+      {
+         target.push(d.source.id)
+      }
+      return (d.source.group == id) ||  (d.target.group == id)? false:true
+      })
+
+     d3.selectAll('circle')
+    .classed('faded', function(d){
+      if(d)
+      {
+         return (d.group == id) || target.indexOf(d.id) > -1? false:true
+      }
+     
+      })
+}
 
 d3.json("pass.json", function(error, graph) {
   if (error) throw error;
