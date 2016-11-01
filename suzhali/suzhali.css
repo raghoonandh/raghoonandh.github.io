@@ -1,0 +1,64 @@
+@font-face {
+    font-family: raleway;
+    src: url(../bower_components/roboto-fontface/fonts/roboto/Roboto-Regular.ttf) format("truetype");
+    font-size: 18px;
+}
+
+body {
+    font-family: raleway;
+    zoom: 104%;
+}
+
+.footer {
+    background: #212121;
+    padding: 10px 0;
+}
+
+.footer a {
+    color: #70726F;
+    font-size: 20px;
+    padding: 10px;
+    border-right: 1px solid #70726F;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.footer a:first-child {
+    border-left: 1px solid #70726F;
+}
+
+.footer a:hover {
+    color: #BF360C;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+
+.navbar
+{
+  background-color: #cb181d;
+}
+
+.degree3
+{
+  fill: #ffffcc;
+}
+.degree1
+{
+   fill: #fc4e2a;
+}
+
+.degree2
+{
+  fill: #fed976;
+}
+
+.degree0
+{
+  fill : #cb181d;
+}
+
+.zerodegrees
+{
+  fill: #fff;
+}
