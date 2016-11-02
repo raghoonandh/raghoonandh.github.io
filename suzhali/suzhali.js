@@ -62,8 +62,8 @@ lyrics = [['Ei', 'Suzhali', 'Azhagi', 'Velagi'],
 
 var svg = d3.select("#suzhali")
             .append('svg')
-            .attr("width", 1200)
-            .attr("height", 1100);
+            .attr("viewbox", "0 0 1200 1100")
+            .
 var k = 0
 for(var i=0; i < lyrics.length; i ++)
 {
