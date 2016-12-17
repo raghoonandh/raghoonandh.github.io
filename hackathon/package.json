@@ -1,0 +1,20 @@
+{
+  "name": "presentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^4.4.0",
+    "d3-jetpack": "^1.0.2",
+    "d3-scale-chromatic": "^1.1.0",
+    "d3-tip": "^0.7.1",
+    "gramex-charts": "^1.1.1",
+    "graph-scroll": "0.0.3"
+  }
+}
