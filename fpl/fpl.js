@@ -17,7 +17,7 @@ var colordict = {
     16: '#546E7A',
     17: '#455A64',
     18: '#37474F',
-    19: '#263238',
+    19: '#263238'
     20: '#212121'
 } 
 
@@ -29,7 +29,7 @@ function getcolor(num)
 
 var fixturestable = d3.selectAll('#fixturestable')
   					  .append('svg')
-  					  .attr("viewBox", "0 0 220 170")
+  					  .attr("viewBox", "0 0 220 180")
 
                    fixturestable.append('rect')
                               .attr('x', 70)
@@ -350,7 +350,7 @@ var docHeight = $(window).height();
 var footerHeight = $('.footer').height();
 var footerTop = $('.footer').position().top + footerHeight;  
 if (footerTop < docHeight) {
-$('.footer').css('margin-top',  (docHeight - footerTop) + 'px');
+$('.footer').css('margin-top',  5 + (docHeight - footerTop) + 'px');
 }
 });
 
