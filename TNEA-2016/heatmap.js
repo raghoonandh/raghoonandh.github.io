@@ -164,3 +164,13 @@ heatup();
 
   ga('create', 'UA-78417578-1', 'auto');
   ga('send', 'pageview');
+
+
+$(document).ready(function() { 
+var docHeight = $(window).height();
+var footerHeight = $('.footer').height();
+var footerTop = $('.footer').position().top + footerHeight;  
+if (footerTop < docHeight) {
+$('.footer').css('margin-top',  (docHeight - footerTop) + 'px');
+}
+});

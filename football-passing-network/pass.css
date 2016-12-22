@@ -77,3 +77,5 @@ input {
   font-weight: bold;
   margin-bottom: 1px;
 }
+
+html { overflow-y: hidden; }

@@ -29,7 +29,7 @@ function getcolor(num)
 
 var fixturestable = d3.selectAll('#fixturestable')
   					  .append('svg')
-  					  .attr("viewBox", "0 0 220 180")
+  					  .attr("viewBox", "0 0 220 170")
 
                    fixturestable.append('rect')
                               .attr('x', 70)
@@ -345,6 +345,15 @@ function rectclick(d){
 
 }
 
+$(document).ready(function() { 
+var docHeight = $(window).height();
+var footerHeight = $('.footer').height();
+var footerTop = $('.footer').position().top + footerHeight;  
+if (footerTop < docHeight) {
+$('.footer').css('margin-top',  (docHeight - footerTop) + 'px');
+}
+});
+
 // google-analytics
 
  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -354,3 +363,4 @@ function rectclick(d){
 
   ga('create', 'UA-78417578-1', 'auto');
   ga('send', 'pageview');
+
