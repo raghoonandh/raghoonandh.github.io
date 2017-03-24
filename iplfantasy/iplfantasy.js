@@ -1,6 +1,30 @@
 d3.csv('iplfix.csv', function(data){ 
 
-console.log(data);
+var parseDate = d3.time.format("%d-%b-%y").parse
+var currDate = new Date()
+data.forEach(function(d) {
+        d.date = parseDate(d.date);
+        d.time = parseInt( d.time.match(/\d/g).join(''))/100;
+    });
+
+var filtereddata = data.filter(function(d){return d.date >= currDate })
+var nextfivematches = filtereddata.splice(0,5)
+var home = nextfivematches.map(function(d){return d.hometeam})
+var away = nextfivematches.map(function(d){return d.awayteam})
+var homeaway = home.concat(away)
+var counts = {}, j, value;
+for (j = 0; j < homeaway.length; j++) {
+    value = homeaway[j];
+    var homeadv = Sugar.Array.count(value, home)
+    console.log(homeadv);
+    if (typeof counts[value] === "undefined") {
+        counts[value] = 1;
+    } else {
+        counts[value]++;
+    }
+}
+
+console.log(counts);
 
 var width = 800,
     height =600
@@ -45,4 +69,11 @@ var position = player.append("svg:image")
             .attr("x", function(d,i){ return postion[d] < 5? 375: 260+(postion[d]-4)*50 })
             .attr('y', function(d,i){ return postion[d] < 5? 370+ (postion[d]-4)*70: 470 })
 
+})
+
+
+$(document).ready(function() {
+    var clock = $('.clock').FlipClock(3600, {
+     countdown: true
+});
 })
