@@ -51,6 +51,25 @@ var teams = [ 'pune', 'delhi', 'mumbai', 'hyderabad', 'punjab', 'gujarat', 'kolk
 var postion = {'pune': 4, 'delhi': 7, 'mumbai':3, 'hyderabad':2, 
             'punjab':8, 'kolkata':5, 'gujarat':6, 'bangalore':1}
 
+svg.append('rect')
+   .attr('x',0)
+   .attr('y',10)
+   .attr('width', 170)
+   .attr('height', 100)
+   .attr('class', 'yellowfellow')
+
+svg.append('text')
+   .attr('x',10)
+   .attr('y', 25 )
+   .attr('dy', '0.37em' )
+   .text('Next Match')
+
+svg.append('text')
+   .attr('x',20)
+   .attr('y', 50 )
+   .attr('dy', '0.37em' )
+   .attr('class', 'teamname')
+   .text(home[0])
 
 var player = svg.selectAll('.teams')
       .data(teams)

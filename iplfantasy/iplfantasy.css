@@ -1,2 +1,10 @@
+body
+{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+}
+
+.navbar{background-color: #FFD63B}
+.yellowfellow{fill: #FFD63B;}
 .field{fill: #00BC69;}
 .pitch{fill: #d2691e;}
