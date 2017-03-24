@@ -1,3 +1,7 @@
+d3.csv('iplfix.csv', function(data){ 
+
+console.log(data);
+
 var width = 800,
     height =600
 
@@ -40,3 +44,5 @@ var position = player.append("svg:image")
             .duration(5000)
             .attr("x", function(d,i){ return postion[d] < 5? 375: 260+(postion[d]-4)*50 })
             .attr('y', function(d,i){ return postion[d] < 5? 370+ (postion[d]-4)*70: 470 })
+
+})
