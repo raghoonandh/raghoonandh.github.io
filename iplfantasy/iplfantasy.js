@@ -11,13 +11,19 @@ d3.csv('iplfix.csv', function(data){
 
 var parseDate = d3.time.format("%d-%b-%y").parse
 var currDate = new Date()
+var currtime = currDate.getHours();
+console.log(currtime);
 data.forEach(function(d) {
         d.date = parseDate(d.date);
         d.time = parseInt( d.time.match(/\d/g).join(''))/100;
     });
 
-var filtereddata = data.filter(function(d){return d.date >= currDate })
+var filtereddata = data.filter(function(d){return d.date > currDate })
+var today = data.filter(function(d){return d.date == currDate })
+var todaymatches = today.filter(function(d){return d.time > currtime })
+    var allmatches = filtereddata.concat(todaymatches)
 var nextfivematches = filtereddata.splice(0,5)
+console.log(nextfivematches);
 var home = nextfivematches.map(function(d){return d.hometeam})
 var away = nextfivematches.map(function(d){return d.awayteam})
 var homeaway = home.concat(away)
@@ -72,7 +78,21 @@ svg.append('text')
    .attr('y', 50 )
    .attr('dy', '0.37em' )
    .attr('class', 'teamname')
-   .text(home[0])
+   .text(toTitleCase(home[0]))
+
+  svg.append('text')
+   .attr('x', 70)
+   .attr('y', 70 )
+   .attr('dy', '0.37em' )
+   .attr('class', 'teamname')
+   .text('vs') 
+
+svg.append('text')
+   .attr('x',20)
+   .attr('y', 90 )
+   .attr('dy', '0.37em' )
+   .attr('class', 'teamname')
+   .text(toTitleCase(away[0]))
 
 var player = svg.selectAll('.teams')
       .data(teams)
@@ -122,3 +142,10 @@ $(document).ready(function() {
      countdown: true
 });
 })
+
+function toTitleCase(str)
+{   if(str)
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    else
+      return ''
+}
