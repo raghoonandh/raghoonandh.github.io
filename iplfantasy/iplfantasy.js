@@ -92,14 +92,27 @@ var position = player.append("svg:image")
             .attr("x", function(d,i){ return postion[d] < 5? 375: 260+(postion[d]-4)*50 })
             .attr('y', function(d,i){ return postion[d] < 5? 370+ (postion[d]-4)*70: 470 })
 
-function recompute()
+$('#myonoffswitch').on('change', function(){
+    if($(this). prop("checked") == true){
+        recompute(false)
+    }
+    else
+    {
+        recompute(true)
+    }
+})
+
+function recompute(toggle)
 {
+    var positionarray = postion
+    if(toggle)
+    positionarray = postion2
     var newpostion = d3.selectAll('.sattai')
     newpostion.transition()
-            .delay(function(d,i){return postion2[d]*400})
+            .delay(function(d,i){return positionarray[d]*400})
             .duration(5000)
-            .attr("x", function(d,i){ return postion2[d] < 5? 375: 260+(postion2[d]-4)*50 })
-            .attr('y', function(d,i){ return postion2[d] < 5? 370+ (postion2[d]-4)*70: 470 })
+            .attr("x", function(d,i){ return positionarray[d] < 5? 375: 260+(positionarray[d]-4)*50 })
+            .attr('y', function(d,i){ return positionarray[d] < 5? 370+ (positionarray[d]-4)*70: 470 })
 }
 })
 
