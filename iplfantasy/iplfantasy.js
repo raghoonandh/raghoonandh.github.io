@@ -47,35 +47,6 @@ svg.append('rect')
    .attr('height', 300)
    .attr('class', 'pitch')
 
-svg.append('rect')
-    .attr('x',0)
-   .attr('y',250)
-   .attr('width', 100)
-   .attr('height', 30)
-   .attr('class', 'yellowfellow')
-   .on('click', function(){return recompute()})
-
-svg.append('text')
-   .attr('x',10)
-   .attr('y', 265 )
-   .attr('dy', '0.37em' )
-   .text('Next 5')
-   .attr('class', 'mini')
-
-svg.append('rect')
-    .attr('x',0)
-   .attr('y',300)
-   .attr('width', 100)
-   .attr('height', 30)
-   .attr('class', 'yellowfellow')
-   .attr('click', function(){return recompute()})
-
-svg.append('text')
-   .attr('x',10)
-   .attr('y', 315 )
-   .attr('dy', '0.37em' )
-   .text('Next 6')
-   .attr('class', 'mini')
 
 var teams = [ 'pune', 'delhi', 'mumbai', 'hyderabad', 'punjab', 'gujarat', 'kolkata', 'bangalore']
 var postion = {'pune': 4, 'delhi': 7, 'mumbai':3, 'hyderabad':2, 
