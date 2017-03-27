@@ -1,3 +1,12 @@
+
+var width = 800,
+    height =600
+
+var svg = d3.select('#ipl')
+    .append('svg')
+   .attr("width", width)
+    .attr("height", height); 
+
 d3.csv('iplfix.csv', function(data){ 
 
 var parseDate = d3.time.format("%d-%b-%y").parse
@@ -24,15 +33,6 @@ for (j = 0; j < homeaway.length; j++) {
     }
 }
 
-console.log(counts);
-
-var width = 800,
-    height =600
-
-var svg = d3.select('#ipl')
-    .append('svg')
-   .attr("width", width)
-    .attr("height", height); 
 
 svg.append('circle')
    .attr('cx', 400)
@@ -47,9 +47,41 @@ svg.append('rect')
    .attr('height', 300)
    .attr('class', 'pitch')
 
+svg.append('rect')
+    .attr('x',0)
+   .attr('y',250)
+   .attr('width', 100)
+   .attr('height', 30)
+   .attr('class', 'yellowfellow')
+   .on('click', function(){return recompute()})
+
+svg.append('text')
+   .attr('x',10)
+   .attr('y', 265 )
+   .attr('dy', '0.37em' )
+   .text('Next 5')
+   .attr('class', 'mini')
+
+svg.append('rect')
+    .attr('x',0)
+   .attr('y',300)
+   .attr('width', 100)
+   .attr('height', 30)
+   .attr('class', 'yellowfellow')
+   .attr('click', function(){return recompute()})
+
+svg.append('text')
+   .attr('x',10)
+   .attr('y', 315 )
+   .attr('dy', '0.37em' )
+   .text('Next 6')
+   .attr('class', 'mini')
+
 var teams = [ 'pune', 'delhi', 'mumbai', 'hyderabad', 'punjab', 'gujarat', 'kolkata', 'bangalore']
 var postion = {'pune': 4, 'delhi': 7, 'mumbai':3, 'hyderabad':2, 
             'punjab':8, 'kolkata':5, 'gujarat':6, 'bangalore':1}
+var postion2 = {'pune': 1, 'delhi': 3, 'mumbai':7, 'hyderabad':5, 
+            'punjab':6, 'kolkata':2, 'gujarat':8, 'bangalore':4}
 
 svg.append('rect')
    .attr('x',0)
@@ -79,15 +111,25 @@ var position = player.append("svg:image")
             .attr("xlink:href", function(d){ return d+'.svg' })
             .attr("width", 40)
             .attr("height", 40)
+            .attr('class', 'sattai')
             .attr("x",  function(d,i){return i%2==0? 250: 500} )
             .attr("y", function(d,i){return i%2==0? 120 + i*50: 120 + (i-1)*50 })
 
       position.transition()
-            .delay(function(d,i){return i*40})
+            .delay(function(d,i){return postion[d]*400})
             .duration(5000)
             .attr("x", function(d,i){ return postion[d] < 5? 375: 260+(postion[d]-4)*50 })
             .attr('y', function(d,i){ return postion[d] < 5? 370+ (postion[d]-4)*70: 470 })
 
+function recompute()
+{
+    var newpostion = d3.selectAll('.sattai')
+    newpostion.transition()
+            .delay(function(d,i){return postion2[d]*400})
+            .duration(5000)
+            .attr("x", function(d,i){ return postion2[d] < 5? 375: 260+(postion2[d]-4)*50 })
+            .attr('y', function(d,i){ return postion2[d] < 5? 370+ (postion2[d]-4)*70: 470 })
+}
 })
 
 
