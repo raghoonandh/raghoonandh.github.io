@@ -30,14 +30,26 @@ var homeaway = home.concat(away)
 var counts = {}, j, value;
 for (j = 0; j < homeaway.length; j++) {
     value = homeaway[j];
-    var homeadv = Sugar.Array.count(value, home)
-    console.log(homeadv);
+    var numOccurences = $.grep(home, function (elem) {
+    return elem === value;
+    }).length
+    var homeadv = numOccurences/2
     if (typeof counts[value] === "undefined") {
-        counts[value] = 1;
+        counts[value] = 1+homeadv-j/10;
     } else {
-        counts[value]++;
+        counts[value] += 1
     }
 }
+
+var sortable = [];
+for (var team in counts) {
+    sortable.push([team, counts[team]]);
+}
+sortable.sort(function(a, b) {
+    return b[1] - a[1];
+});
+
+console.log(sortable)
 
 
 svg.append('circle')
@@ -129,7 +141,7 @@ function recompute(toggle)
     positionarray = postion2
     var newpostion = d3.selectAll('.sattai')
     newpostion.transition()
-            .delay(function(d,i){return positionarray[d]*400})
+            .delay(function(d,i){return (positionarray[d]-1)*400})
             .duration(5000)
             .attr("x", function(d,i){ return positionarray[d] < 5? 375: 260+(positionarray[d]-4)*50 })
             .attr('y', function(d,i){ return positionarray[d] < 5? 370+ (positionarray[d]-4)*70: 470 })
