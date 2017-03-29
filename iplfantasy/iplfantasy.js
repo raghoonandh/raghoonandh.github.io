@@ -1,4 +1,3 @@
-
 var width = 800,
     height =600
 
@@ -12,7 +11,6 @@ d3.csv('iplfix.csv', function(data){
 var parseDate = d3.time.format("%d-%b-%y").parse
 var currDate = new Date()
 var currtime = currDate.getHours();
-console.log(currtime);
 data.forEach(function(d) {
         d.date = parseDate(d.date);
         d.time = parseInt( d.time.match(/\d/g).join(''))/100;
@@ -21,12 +19,22 @@ data.forEach(function(d) {
 var filtereddata = data.filter(function(d){return d.date > currDate })
 var today = data.filter(function(d){return d.date == currDate })
 var todaymatches = today.filter(function(d){return d.time > currtime })
-    var allmatches = filtereddata.concat(todaymatches)
+var allmatches = todaymatches.concat(filtereddata)
+var matchtime = (allmatches[0]['date']).setHours(allmatches[0]['time']+12)
+var secondsdiff = (matchtime-currDate.getTime())/1000;
+console.log(secondsdiff)
+var clock = $('.clock').FlipClock(secondsdiff, {
+     countdown: true
+});
 var nextfivematches = filtereddata.splice(0,5)
-console.log(nextfivematches);
+var nexteightmatches = filtereddata.splice(0,8)
 var home = nextfivematches.map(function(d){return d.hometeam})
 var away = nextfivematches.map(function(d){return d.awayteam})
+var home8 = nexteightmatches.map(function(d){return d.hometeam})
+var away8 = nexteightmatches.map(function(d){return d.awayteam})
 var homeaway = home.concat(away)
+var homeaway8 = home8.concat(away8)
+function getposition(homeaway, home) {
 var counts = {}, j, value;
 for (j = 0; j < homeaway.length; j++) {
     value = homeaway[j];
@@ -40,7 +48,6 @@ for (j = 0; j < homeaway.length; j++) {
         counts[value] += 1
     }
 }
-
 var sortable = [];
 for (var team in counts) {
     sortable.push([team, counts[team]]);
@@ -49,7 +56,19 @@ sortable.sort(function(a, b) {
     return b[1] - a[1];
 });
 
-console.log(sortable)
+
+
+var postionobj = {}
+for(var i=0; i<sortable.length; i++)
+{       
+        postionobj[sortable[i][0]] = i+1
+}
+return postionobj
+}
+
+var postion = getposition(homeaway, home)
+var position2 = getposition(homeaway8, home8)
+
 
 
 svg.append('circle')
@@ -66,11 +85,23 @@ svg.append('rect')
    .attr('class', 'pitch')
 
 
-var teams = [ 'pune', 'delhi', 'mumbai', 'hyderabad', 'punjab', 'gujarat', 'kolkata', 'bangalore']
-var postion = {'pune': 4, 'delhi': 7, 'mumbai':3, 'hyderabad':2, 
-            'punjab':8, 'kolkata':5, 'gujarat':6, 'bangalore':1}
-var postion2 = {'pune': 1, 'delhi': 3, 'mumbai':7, 'hyderabad':5, 
-            'punjab':6, 'kolkata':2, 'gujarat':8, 'bangalore':4}
+var teams = [ 'bangalore', 'delhi', 'gujarat' ,'hyderabad','kolkata', 'mumbai', 'pune', 'punjab']
+
+for(var j=0; j<teams.length; j++)
+{
+    svg.append("svg:image")
+            .attr("xlink:href", teams[j]+'.svg')
+            .attr("width", 25)
+            .attr("height", 25)
+            .attr('class', 'sattai')
+            .attr("x",  15 )
+            .attr("y", j*50+150)
+    svg.append('text')
+       .attr("x",  0 )
+       .attr("y", j*50+190)
+       .attr('class', 'mini')
+       .text(toTitleCase(teams[j]))
+}
 
 svg.append('rect')
    .attr('x',0)
@@ -132,13 +163,15 @@ $('#myonoffswitch').on('change', function(){
     {
         recompute(true)
     }
+
+
 })
 
 function recompute(toggle)
 {
     var positionarray = postion
     if(toggle)
-    positionarray = postion2
+    positionarray = position2
     var newpostion = d3.selectAll('.sattai')
     newpostion.transition()
             .delay(function(d,i){return (positionarray[d]-1)*400})
@@ -149,11 +182,6 @@ function recompute(toggle)
 })
 
 
-$(document).ready(function() {
-    var clock = $('.clock').FlipClock(3600, {
-     countdown: true
-});
-})
 
 function toTitleCase(str)
 {   if(str)
@@ -161,3 +189,6 @@ function toTitleCase(str)
     else
       return ''
 }
+
+
+
