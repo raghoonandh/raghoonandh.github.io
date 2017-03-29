@@ -84,6 +84,72 @@ svg.append('rect')
    .attr('height', 300)
    .attr('class', 'pitch')
 
+var arrowrect = svg.append('rect')
+   .attr('x', 320)
+   .attr('y', 160)
+   .attr('height', 250)
+   .attr('width',2)
+   .attr('opacity', 0)
+
+
+var rightrect = svg.append('rect')
+   .attr('x',320)
+   .attr('y',530)
+   .attr('width', 130)
+   .attr('height', 2)
+   .attr('opacity', 0)
+
+
+ var downarrow = svg.append("svg:image")
+            .attr("xlink:href", 'down.svg')
+            .attr("width", 25)
+            .attr("height", 25)
+            .attr("x",  309 )
+            .attr("y", 400)
+            .attr('opacity', 0)
+
+ var rightarrow = svg.append("svg:image")
+            .attr("xlink:href", 'right.svg')
+            .attr("width", 25)
+            .attr("height", 25)
+            .attr("x",  440 )
+            .attr("y", 518)
+            .attr('opacity', 0)
+
+arrowtransition()
+function arrowtransition()
+{
+   
+   arrowrect.transition()
+             .attr('opacity', 0)
+    downarrow.transition()
+             .attr('opacity', 0)
+    rightrect.transition()
+             .attr('opacity', 0)
+    rightarrow.transition()
+             .attr('opacity', 0)
+
+   arrowrect.transition()
+            .delay(3000)
+            .duration(1000)
+            .attr('opacity', 1)
+
+    downarrow.transition()
+            .delay(3000)
+            .duration(1000)
+            .attr('opacity', 1)
+
+    rightrect.transition()
+            .delay(3000)
+            .duration(1000)
+            .attr('opacity', 1)
+
+    rightarrow.transition()
+            .delay(3000)
+            .duration(1000)
+            .attr('opacity', 1)
+
+}
 
 var teams = [ 'bangalore', 'delhi', 'gujarat' ,'hyderabad','kolkata', 'mumbai', 'pune', 'punjab']
 

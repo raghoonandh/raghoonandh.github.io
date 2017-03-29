@@ -75,3 +75,27 @@ body
 {
 	margin-left: 90px
 }
+
+.footer {
+    background: #FFD63B;
+    padding: 10px 0;
+}
+
+.footer a {
+    color: #000;
+    font-size: 20px;
+    padding: 10px;
+    border-right: 1px solid #000;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.footer a:first-child {
+    border-left: 1px solid #000;
+}
+
+.footer a:hover {
+    color: #BF360C;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
