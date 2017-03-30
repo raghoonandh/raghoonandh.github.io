@@ -46,14 +46,14 @@ body
     box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-    content: "RACY";
+    content: "CRAZY";
     padding-left: 10px;
     background-color: #34A7C1; color: #FFFFFF;
 }
 .onoffswitch-inner:after {
     content: "LAZY";
     padding-right: 10px;
-    background-color: #EEEEEE; color: #999999;
+    background-color: #00BC69; color: #FFFFFF;
     text-align: right;
 }
 .onoffswitch-switch {
