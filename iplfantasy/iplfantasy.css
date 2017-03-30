@@ -115,3 +115,9 @@ body
 	margin-left: 20%;
 }
 
+.alert-green {
+  color: white;
+  background-color: #37BC9B;
+  font-size: 22px;
+  font-family: 'Share Tech Mono', monospace;
+}
