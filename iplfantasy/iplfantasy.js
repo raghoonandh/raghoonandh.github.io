@@ -182,6 +182,13 @@ svg.append('text')
    .text('Next Match')
 
 svg.append('text')
+   .attr('x',280)
+   .attr('y', 100 )
+   .attr('dy', '0.37em' )
+   .text('Space for Ads')
+   .classed('ads', true)
+
+svg.append('text')
    .attr('x',20)
    .attr('y', 50 )
    .attr('dy', '0.37em' )
