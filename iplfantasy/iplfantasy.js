@@ -13,21 +13,20 @@ var currDate = new Date()
 var currtime = currDate.getHours();
 data.forEach(function(d) {
         d.date = parseDate(d.date);
-        d.time = parseInt( d.time.match(/\d/g).join(''))/100;
+        d.time = (parseInt( d.time.match(/\d/g).join(''))/100) +12;
     });
 
 var filtereddata = data.filter(function(d){return d.date > currDate })
-var today = data.filter(function(d){return d.date == currDate })
+var today = data.filter(function(d){return d.date.getTime() == currDate.getTime() })
 var todaymatches = today.filter(function(d){return d.time > currtime })
 var allmatches = todaymatches.concat(filtereddata)
-var matchtime = (allmatches[0]['date']).setHours(allmatches[0]['time']+12)
+var matchtime = (allmatches[0]['date']).setHours(allmatches[0]['time'])
 var secondsdiff = (matchtime-currDate.getTime())/1000;
-console.log(secondsdiff)
 var clock = $('.clock').FlipClock(secondsdiff, {
      countdown: true
 });
-var nextfivematches = filtereddata.splice(0,5)
-var nexteightmatches = filtereddata.splice(0,8)
+var nextfivematches = allmatches.splice(0,5)
+var nexteightmatches = allmatches.splice(0,8)
 var home = nextfivematches.map(function(d){return d.hometeam})
 var away = nextfivematches.map(function(d){return d.awayteam})
 var home8 = nexteightmatches.map(function(d){return d.hometeam})
@@ -261,6 +260,12 @@ setTimeout(function() { ohsnapalert() }, 25000);
 function ohsnapalert(){
   ohSnap('This App Auto Updates After Everymatch!', {color: 'green', 'duration':'8000'});
 }
+
+//testing
+// Date.prototype.addDays = function(days) {
+//     this.setDate(this.getDate() + parseInt(days));
+//     return this;
+// };
 
 
 // google-analytics
