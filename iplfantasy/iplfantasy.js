@@ -10,6 +10,7 @@ d3.csv('iplfix.csv', function(data){
 
 var parseDate = d3.time.format("%d-%b-%y").parse
 var currDate = new Date()
+currDate.setDate(currDate.getDate()-1);
 var currtime = currDate.getHours();
 data.forEach(function(d) {
         d.date = parseDate(d.date);
@@ -17,7 +18,7 @@ data.forEach(function(d) {
     });
 
 var filtereddata = data.filter(function(d){return d.date > currDate })
-var today = data.filter(function(d){return d.date.getTime() == currDate.getTime() })
+// var today = data.filter(function(d){return d.date.getTime() == currDate.getTime() })
 var todaymatches = today.filter(function(d){return d.time > currtime })
 var allmatches = todaymatches.concat(filtereddata)
 var matchtime = (allmatches[0]['date']).setHours(allmatches[0]['time'])
