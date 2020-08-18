@@ -27,7 +27,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     d3.csv("season201920.csv", function(data) {
 
     svgGw.append('text')
-            .attr('x', 90 )
+            .attr('x', 150 )
             .attr('y', 240)
             .classed('gameweek', true)
             .attr('fill', '#08109A')
@@ -46,7 +46,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
                              .data(rounds)
                              .enter()
                              .append('rect')
-                         .attr('x', function(d,i){ return ((i+1)%5)*70+10  })
+                         .attr('x', function(d,i){ return ((i+1)%5)*70+60  })
                          .attr('y', function(d,i) {return 250 + (Math.floor((i)/5))*50  } )
                          .attr('height', 40)
                          .attr('width', 60)
@@ -60,7 +60,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
                              .data(rounds)
                              .enter()
                              .append('text')
-                         .attr('x', function(d,i){ return ((i+1)%5)*70+25  })
+                         .attr('x', function(d,i){ return ((i+1)%5)*70+75  })
                          .attr('y', function(d,i) {return 275 + (Math.floor(i/5))*50  } )
                          .classed('gameweek', true)
                          .attr('fill', '#08109A')
@@ -114,6 +114,9 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     var filter_data  = data.filter(function(d){return d.round == round});
       var starters  = filter_data.filter(function(d){ return d.starting==1 })
       var total_points = d3.sum(starters, d => d.total_points_nextgw) 
+      var captain = starters.filter(function(d){ return d.captain == 1})
+      console.log(total_points);
+      total_points = total_points+Number(captain[0].total_points_nextgw)
       console.log(total_points);
 
        svg.append('text')
@@ -131,12 +134,25 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             
             var curr_player = filter_data[j]
             var curr_player_type = curr_player.element_type
+            var points = curr_player.total_points_nextgw;
+            if(curr_player.captain == 1)
+            points = points*2
+            var player_name = curr_player.web_name
+            var namelength = player_name.length;
+            var offset = 0;
+            if (namelength < 7)
+              offset = 10;
+            if (namelength > 10)
+              offset = -10;
+
+             
+
             // console.log(curr_player_type);
 
             if (curr_player_type==1) {
 
            svg.append("svg:image")
-            .attr("xlink:href", 'jerseys/astonvilla.svg')
+            .attr("xlink:href", 'jerseys/' + curr_player.jersey_code +  '.svg')
             .attr("width", 80)
             .attr("height", 80)
             .attr("x",  150+(gk*300))
@@ -145,19 +161,31 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             divTooltip.style("left", (d3.event.pageX-20 )+"px");
             divTooltip.style("top", (d3.event.pageY-35)+"px");
             divTooltip.style("display", "inline-block");
-            divTooltip.html('Number of Tackels Won/Attempted 5/6')})
-            .on("mouseout", function() { divTooltip.style("display", "none"); }) 
+            divTooltip.html('Probability of Scoring 4 or More Points: ' +curr_player.probability+' %')})
+            .on("mouseout", function() { divTooltip.style("display", "none"); })
+
+            if(curr_player.starting == 0) 
+            {
+
+              svg.append("svg:image")
+            .attr("xlink:href", 'jerseys/bench.svg')
+            .attr("width", 30)
+            .attr("height", 30)
+            .attr("x",  220+(gk*300))
+            .attr("y", 100)
+  
+            }
 
 
                svg.append("text")
             .attr("x",  185+(gk*300))
             .attr("y", 175)
             .classed('points', true)
-            .text(Number(curr_player.total_points_nextgw))
+            .text(Number(points))
            
 
             svg.append('text')
-            .attr('x', 160+(gk*300))
+            .attr('x', 160+(gk*300)+offset)
             .attr('y', 150)
             .text(curr_player.web_name);
 
@@ -170,7 +198,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
 
 
            svg.append("svg:image")
-            .attr("xlink:href", 'jerseys/arsenal.svg')
+            .attr("xlink:href", 'jerseys/'+ curr_player.jersey_code +  '.svg' )
             .attr("width", 80)
             .attr("height", 80)
             .attr("x",  0+(df*150) )
@@ -179,11 +207,11 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             divTooltip.style("left", (d3.event.pageX-20 )+"px");
             divTooltip.style("top", (d3.event.pageY-35)+"px");
             divTooltip.style("display", "inline-block");
-            divTooltip.html('Number of Tackels Won/Attempted 5/6')})
+            divTooltip.html('Probability of Scoring 4 or More Points: ' +curr_player.probability+' %')})
             .on("mouseout", function() { divTooltip.style("display", "none"); })
 
              svg.append('text')
-            .attr('x', 10+(df*150))
+            .attr('x', 10+(df*150)+offset)
             .attr('y', 320)
             .text(curr_player.web_name);
 
@@ -191,7 +219,19 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             .attr("x",  35+(df*150))
             .attr("y", 345)
             .classed('points', true)
-            .text(Number(curr_player.total_points_nextgw))
+            .text(Number(points))
+
+
+             if(curr_player.starting == 0) 
+            {
+
+              svg.append("svg:image")
+            .attr("xlink:href", 'jerseys/bench.svg')
+            .attr("width", 30)
+            .attr("height", 30)
+            .attr("x",  70+(df*150))
+            .attr("y", 270)
+            }
            
 
 
@@ -203,7 +243,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             else if (curr_player_type==3) {
 
                 svg.append("svg:image")
-            .attr("xlink:href", 'jerseys/leedsunited.svg')
+            .attr("xlink:href", 'jerseys/'+ curr_player.jersey_code +  '.svg' )
             .attr("width", 80)
             .attr("height", 80)
             .attr("x",  0+(mf*150) )
@@ -212,11 +252,11 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             divTooltip.style("left", (d3.event.pageX-20 )+"px");
             divTooltip.style("top", (d3.event.pageY-35)+"px");
             divTooltip.style("display", "inline-block");
-            divTooltip.html('Number of Tackels Won/Attempted 5/6')})
+            divTooltip.html('Probability of Scoring 4 or More Points: ' +curr_player.probability+' %')})
             .on("mouseout", function() { divTooltip.style("display", "none"); })
 
             svg.append('text')
-            .attr('x', 10+(mf*150))
+            .attr('x', 10+(mf*150)+offset)
             .attr('y', 500)
             .text(curr_player.web_name);
 
@@ -224,7 +264,29 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             .attr("x",  35+(mf*150))
             .attr("y", 525)
             .classed('points', true)
-            .text(Number(curr_player.total_points_nextgw))
+            .text(Number(points))
+
+              if(curr_player.starting == 0) 
+            {
+
+              svg.append("svg:image")
+            .attr("xlink:href", 'jerseys/bench.svg')
+            .attr("width", 30)
+            .attr("height", 30)
+            .attr("x",  70+(mf*150))
+            .attr("y", 450)
+            }
+
+               if(curr_player.captain == 1) 
+            {
+
+              svg.append("svg:image")
+            .attr("xlink:href", 'jerseys/captain.svg')
+            .attr("width", 30)
+            .attr("height", 30)
+            .attr("x",  70+(mf*150))
+            .attr("y", 450)
+            }
 
             mf = mf+1;
 
@@ -234,7 +296,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             {
 
         svg.append("svg:image")
-            .attr("xlink:href", 'jerseys/chelsea.svg')
+            .attr("xlink:href",  'jerseys/'+ curr_player.jersey_code +  '.svg')
             .attr("width", 80)
             .attr("height", 80)
             .attr("x",  150+fw*150 )
@@ -243,20 +305,45 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             divTooltip.style("left", (d3.event.pageX-20 )+"px");
             divTooltip.style("top", (d3.event.pageY-35)+"px");
             divTooltip.style("display", "inline-block");
-            divTooltip.html('Number of Tackels Won/Attempted 5/6')})
+            divTooltip.html('Probability of Scoring 4 or More Points: ' +curr_player.probability+' %')})
             .on("mouseout", function() { divTooltip.style("display", "none"); })
 
 
              svg.append('text')
             .attr('x', 160+(fw*150))
             .attr('y', 680)
-            .text(curr_player.web_name);
+            .text(curr_player.web_name)+offset;
 
              svg.append('text')
             .attr('x', 185+(fw*150))
             .attr('y', 705)
             .classed('points', true)
-            .text(Number(curr_player.total_points_nextgw));
+            .text(Number(points));
+
+               if(curr_player.starting == 0) 
+            {
+
+              svg.append("svg:image")
+            .attr("xlink:href", 'jerseys/bench.svg')
+            .attr("width", 30)
+            .attr("height", 30)
+            .attr("x",  220+(fw*150))
+            .attr("y", 630)
+            }
+
+              if(curr_player.captain == 1) 
+            {
+
+              svg.append("svg:image")
+            .attr("xlink:href", 'jerseys/captain.svg')
+            .attr("width", 30)
+            .attr("height", 30)
+            .attr("x",  220+(fw*150))
+            .attr("y", 630)
+            }
+
+          
+
 
             fw = fw+1
 
