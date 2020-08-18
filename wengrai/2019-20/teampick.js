@@ -24,8 +24,13 @@ function isInArray(value, array) {
 
 var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
      
-    d3.csv("season201920.csv", function(data) {
+    d3.csv("season201920-10kData.csv", function(data) {
+      console.log(data.length);
+      data = data.filter(function(d){return (d.type == 'model_budget')}) 
 
+
+
+      console.log(data.length);
     svgGw.append('text')
             .attr('x', 150 )
             .attr('y', 240)
@@ -34,7 +39,8 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             .text('Gameweek');
 
 
-    var rounds = d3.map(data, function(d){return d.round;}).keys();
+    var rounds = d3.map(data, function(d){return Number(d.round);}).keys();
+    rounds.sort(function(a, b){return b-a});
     var row= 0
     var col = 0
 
@@ -46,12 +52,12 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
                              .data(rounds)
                              .enter()
                              .append('rect')
-                         .attr('x', function(d,i){ return ((i+1)%5)*70+60  })
+                         .attr('x', function(d,i){ return ((i)%5)*70+60  })
                          .attr('y', function(d,i) {return 250 + (Math.floor((i)/5))*50  } )
                          .attr('height', 40)
                          .attr('width', 60)
                         .attr('fill', '#05FF88')
-                        .on('click', function(d, i){ pickteam(Number(d))})
+                        .on('click', function(d, i){ pickteam(Number(d), 'model_budget')})
 
                 var gameweekstext = svgGw.append("g")
                              .attr("class", "links")
@@ -60,7 +66,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
                              .data(rounds)
                              .enter()
                              .append('text')
-                         .attr('x', function(d,i){ return ((i+1)%5)*70+75  })
+                         .attr('x', function(d,i){ return ((i)%5)*70+75  })
                          .attr('y', function(d,i) {return 275 + (Math.floor(i/5))*50  } )
                          .classed('gameweek', true)
                          .attr('fill', '#08109A')
@@ -98,10 +104,10 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     //     }
     // }
        
-    pickteam(3);
+    pickteam(3, 'model_budget');
 
 
-    function pickteam(round) { 
+    function pickteam(round,type) { 
 
         svg.selectAll("*").remove();
 
@@ -111,13 +117,16 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             .text('Gameweek ' + round)
             .classed('weekname', true);
 
-    var filter_data  = data.filter(function(d){return d.round == round});
-      var starters  = filter_data.filter(function(d){ return d.starting==1 })
+    var filter_data  = data.filter(function(d){return d.round == round  });
+    
+
+      var starters  = filter_data.filter(function(d){ return Number(d.starting)==1 })
+      
       var total_points = d3.sum(starters, d => d.total_points_nextgw) 
-      var captain = starters.filter(function(d){ return d.captain == 1})
-      console.log(total_points);
+      var captain = starters.filter(function(d){ return Number(d.captain) == 1})
+      
       total_points = total_points+Number(captain[0].total_points_nextgw)
-      console.log(total_points);
+    
 
        svg.append('text')
             .attr('x', 290)
