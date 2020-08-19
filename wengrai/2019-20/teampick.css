@@ -62,3 +62,13 @@ body
     font-weight: bold;
     font-size: 23px;
 }
+
+.active
+{
+    fill: orange;
+}
+
+.inactive
+{
+    fill: grey;
+}

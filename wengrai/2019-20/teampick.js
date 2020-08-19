@@ -23,10 +23,12 @@ function isInArray(value, array) {
 
 
 var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
-     
+    var curr_round = 3;
+    var curr_type = 'model_dream';
+
     d3.csv("season201920-10kData.csv", function(data) {
       console.log(data.length);
-      data = data.filter(function(d){return (d.type == 'model_budget')}) 
+   
 
 
 
@@ -44,6 +46,72 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     var row= 0
     var col = 0
 
+    function toggle_team(type)
+    {
+
+      pickteam(type, curr_round)
+      if(type == 'model_dream')
+      {
+      curr_type = 'model_dream'
+      dream_team.classed('inactive', false)
+      dream_team.classed('active', true)
+      real_team.classed('active', false)
+      real_team.classed('inactive', true)
+    }
+    else
+    {
+      curr_type = 'model_budget'
+      dream_team.classed('active', false)
+      dream_team.classed('inactive', true)
+      real_team.classed('inactive', false)
+      real_team.classed('active', true)
+
+    }
+    }
+
+    function toggle_gameweek(round_curr)
+    {
+      curr_round = round_curr
+      pickteam()
+      gameweeks.classed('active', function (d,i){ return  Number(d) == curr_round? true:false } )
+      gameweeks.classed('inactive', function (d,i){ return Number(d) == curr_round? false:true } )
+
+    }
+
+    var dream_team = svgGw.append('rect')
+         .attr('x', 60)
+         .attr('y', 160)
+         .attr('width', 120)
+         .attr('height', 40)
+         .classed('active', true)
+         .on('click', function(){  toggle_team('model_dream') })
+
+    svgGw.append('text')
+         .attr('x', 70)
+         .attr('y', 180)
+         .text('Dream Team')
+          .on('click', function(){  toggle_team('model_dream') })
+
+
+
+          var real_team = svgGw.append('rect')
+         .attr('x', 170)
+         .attr('y', 160)
+         .attr('width', 120)
+         .attr('height', 40)
+         .classed('inactive', true)
+         .on('click', function(){   toggle_team('model_budget') })
+
+
+
+
+    svgGw.append('text')
+         .attr('x', 190)
+         .attr('y', 180)
+         .text('Real Team')
+          .on('click', function(){  toggle_team('model_budget') })
+
+
 
                 var gameweeks = svgGw.append("g")
                              .attr("class", "links")
@@ -56,8 +124,10 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
                          .attr('y', function(d,i) {return 250 + (Math.floor((i)/5))*50  } )
                          .attr('height', 40)
                          .attr('width', 60)
-                        .attr('fill', '#05FF88')
-                        .on('click', function(d, i){ pickteam(Number(d), 'model_budget')})
+  
+                        .classed('active', function (d,i){ return  Number(d) == curr_round? true:false } )
+                        .classed('inactive', function (d,i){ return Number(d) == curr_round? false:true } )
+                        .on('click', function(d, i){ pickteam( toggle_gameweek(Number(d)) )})
 
                 var gameweekstext = svgGw.append("g")
                              .attr("class", "links")
@@ -103,22 +173,33 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     //         col +=1
     //     }
     // }
-       
-    pickteam(3, 'model_budget');
+     console.log(curr_type);  
+    pickteam(curr_type, curr_round);
 
 
-    function pickteam(round,type) { 
+    function pickteam(mtype, round) {
 
+   
+    console.log('there', curr_type) 
+      console.log('there',mtype)
+        curr_round = round| curr_round;
+        curr_type =  mtype? mtype: curr_type;
+        console.log(curr_type);
+        console.log('now',curr_round);
         svg.selectAll("*").remove();
 
         svg.append('text')
             .attr('x', 250)
             .attr('y', 30)
-            .text('Gameweek ' + round)
+            .text('Gameweek ' + curr_round)
             .classed('weekname', true);
 
-    var filter_data  = data.filter(function(d){return d.round == round  });
-    
+    var filter_data  = data.filter(function(d){return d.round == curr_round  });
+          console.log(filter_data);
+       filter_data = filter_data.filter(function(d){return (d.type == curr_type)}) 
+       console.log(filter_data)
+
+
 
       var starters  = filter_data.filter(function(d){ return Number(d.starting)==1 })
       
