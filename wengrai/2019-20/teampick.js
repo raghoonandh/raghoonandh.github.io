@@ -272,12 +272,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             .attr("height", 80)
             .attr("x",  150+(gk*300))
             .attr("y", 50)
-            .on("mouseover", function() { 
-            divTooltip.style("left", (d3.event.pageX-20 )+"px");
-            divTooltip.style("top", (d3.event.pageY-35)+"px");
-            divTooltip.style("display", "inline-block");
-            divTooltip.html('Probability of Scoring 4 or More Points: ' +curr_player.probability+' %')})
-            .on("mouseout", function() { divTooltip.style("display", "none"); })
+            .attr('title', 'test')
 
             if(curr_player.starting == 0) 
             {
@@ -318,12 +313,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             .attr("height", 80)
             .attr("x",  0+(df*150) )
             .attr("y", 220)
-            .on("mouseover", function() { 
-            divTooltip.style("left", (d3.event.pageX-20 )+"px");
-            divTooltip.style("top", (d3.event.pageY-35)+"px");
-            divTooltip.style("display", "inline-block");
-            divTooltip.html('Probability of Scoring 4 or More Points: ' +curr_player.probability+' %')})
-            .on("mouseout", function() { divTooltip.style("display", "none"); })
+            .attr('title', 'test')
 
              svg.append('text')
             .attr('x', 10+(df*150)+offset)
@@ -363,12 +353,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             .attr("height", 80)
             .attr("x",  0+(mf*150) )
             .attr("y", 400)
-            .on("mouseover", function() { 
-            divTooltip.style("left", (d3.event.pageX-20 )+"px");
-            divTooltip.style("top", (d3.event.pageY-35)+"px");
-            divTooltip.style("display", "inline-block");
-            divTooltip.html('Probability of Scoring 4 or More Points: ' +curr_player.probability+' %')})
-            .on("mouseout", function() { divTooltip.style("display", "none"); })
+            .attr('title', 'test')
 
             svg.append('text')
             .attr('x', 10+(mf*150)+offset)
@@ -416,12 +401,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
             .attr("height", 80)
             .attr("x",  150+fw*150 )
             .attr("y", 580)
-            .on("mouseover", function() { 
-            divTooltip.style("left", (d3.event.pageX-20 )+"px");
-            divTooltip.style("top", (d3.event.pageY-35)+"px");
-            divTooltip.style("display", "inline-block");
-            divTooltip.html('Probability of Scoring 4 or More Points: ' +curr_player.probability+' %')})
-            .on("mouseout", function() { divTooltip.style("display", "none"); })
+            .attr('title', 'test')
 
 
              svg.append('text')
