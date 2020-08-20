@@ -72,3 +72,10 @@ body
 {
     fill: grey;
 }
+
+.teamtype
+{
+    fill: orange;
+    font-size: 30px;
+
+}

@@ -11,6 +11,8 @@ var svgGw = d3.select('#picks')
               .append('svg')
               .attr('width', 400)
               .attr('height', h)
+            
+
 				 // svg.append("svg:image")
   			// 		.attr("xlink:href", 'img/football-field.svg')
   			// 		.attr("width", w)
@@ -23,7 +25,7 @@ function isInArray(value, array) {
 
 
 var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
-    var curr_round = 3;
+    var curr_round =  3
     var curr_type = 'model_dream';
 
     d3.csv("season201920-10kData.csv", function(data) {
@@ -45,7 +47,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     rounds.sort(function(a, b){return b-a});
     var row= 0
     var col = 0
-
+    curr_round =  d3.max(data, d => +d.round);
     function toggle_team(type)
     {
 
@@ -141,6 +143,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
                          .classed('gameweek', true)
                          .attr('fill', '#08109A')
                          .text(function(d,i){ return Number(d)})
+                         .on('click', function(d, i){ pickteam( toggle_gameweek(Number(d)) )})
 
 
 
@@ -173,7 +176,10 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     //         col +=1
     //     }
     // }
-     console.log(curr_type);  
+
+
+  
+    console.log(curr_type);  
     pickteam(curr_type, curr_round);
 
 
@@ -184,15 +190,27 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
       console.log('there',mtype)
         curr_round = round| curr_round;
         curr_type =  mtype? mtype: curr_type;
-        console.log(curr_type);
-        console.log('now',curr_round);
+       
+        gw_tex = 'Real Team'
+        if(curr_type=='model_dream')
+        gw_tex = 'Dream Team'
+
+
         svg.selectAll("*").remove();
 
         svg.append('text')
-            .attr('x', 250)
+            .attr('x', 390)
             .attr('y', 30)
-            .text('Gameweek ' + curr_round)
+            .text('Gameweek '+curr_round)
             .classed('weekname', true);
+
+
+
+        svg.append('text')
+            .attr('x', 160)
+            .attr('y', 30)
+            .text(gw_tex)
+            .classed('teamtype', true); 
 
     var filter_data  = data.filter(function(d){return d.round == curr_round  });
           console.log(filter_data);
@@ -207,12 +225,20 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
       var captain = starters.filter(function(d){ return Number(d.captain) == 1})
       
       total_points = total_points+Number(captain[0].total_points_nextgw)
+      var total_budget =  d3.sum(filter_data, d => d.value)
+      total_budget = total_budget/10 
     
 
        svg.append('text')
             .attr('x', 290)
             .attr('y', 80)
             .text(total_points + ' Pts')
+            .classed('pointsbig', true);
+
+            svg.append('text')
+            .attr('x', 290)
+            .attr('y', 120)
+            .text(total_budget + 'm')
             .classed('pointsbig', true);
 
      var gk = 0,
