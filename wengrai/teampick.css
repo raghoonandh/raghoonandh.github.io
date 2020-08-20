@@ -1,0 +1,74 @@
+.player
+{
+	fill: navy;
+}
+
+#rightsidebar
+{
+	background-color: #FFCE44;
+}
+
+.bolds
+{
+	font-weight: bold;
+	margin-bottom: 1px;
+}
+
+.navbar
+{
+	/*background-color: #618E49;*/
+}
+
+.toolTip_div {
+          font-family: 'Roboto Mono', monospace;
+        position: absolute;
+        display: none;
+        width: auto;
+        height: auto;
+        background: none repeat scroll 0 0 white;
+        border: 0 none;
+        border-radius: 8px 8px 8px 8px;
+        box-shadow: -3px 3px 15px #888888;
+        color: black;
+        font: 12px sans-serif;
+        padding: 5px;
+        z-index: 100;
+        text-align: center;
+  }
+
+
+  .gameweek{ font-size: 20px; 
+  
+    color: white;
+    }
+
+    .weekname {
+        font-size: 30px;
+    }
+
+body
+{
+    font-family: 'Roboto Mono', monospace;
+}
+
+.points
+{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.pointsbig
+{
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.active
+{
+    fill: orange;
+}
+
+.inactive
+{
+    fill: grey;
+}
