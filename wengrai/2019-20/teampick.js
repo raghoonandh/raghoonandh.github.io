@@ -36,11 +36,10 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
 
       console.log(data.length);
     svgGw.append('text')
-            .attr('x', 150 )
+            .attr('x', 130 )
             .attr('y', 240)
             .classed('gameweek', true)
-            .attr('fill', '#08109A')
-            .text('Gameweek');
+            .text('Gameweek Picker');
 
 
     var rounds = d3.map(data, function(d){return Number(d.round);}).keys();
@@ -97,7 +96,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
 
 
           var real_team = svgGw.append('rect')
-         .attr('x', 170)
+         .attr('x', 190)
          .attr('y', 160)
          .attr('width', 120)
          .attr('height', 40)
@@ -108,7 +107,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
 
 
     svgGw.append('text')
-         .attr('x', 190)
+         .attr('x', 210)
          .attr('y', 180)
          .text('Real Team')
           .on('click', function(){  toggle_team('model_budget') })
@@ -141,7 +140,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
                          .attr('x', function(d,i){ return ((i)%5)*70+75  })
                          .attr('y', function(d,i) {return 275 + (Math.floor(i/5))*50  } )
                          .classed('gameweek', true)
-                         .attr('fill', '#08109A')
+                 
                          .text(function(d,i){ return Number(d)})
                          .on('click', function(d, i){ pickteam( toggle_gameweek(Number(d)) )})
 
@@ -199,7 +198,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
         svg.selectAll("*").remove();
 
         svg.append('text')
-            .attr('x', 390)
+            .attr('x', 370)
             .attr('y', 30)
             .text('Gameweek '+curr_round)
             .classed('weekname', true);
