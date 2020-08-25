@@ -36,10 +36,10 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
 
       console.log(data.length);
     svgGw.append('text')
-            .attr('x', 130 )
+            .attr('x', 60 )
             .attr('y', 240)
             .classed('gameweek', true)
-            .text('Gameweek Picker');
+            .text('Gameweeks - Season 2019/20');
 
 
     var rounds = d3.map(data, function(d){return Number(d.round);}).keys();
@@ -141,7 +141,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
                          .attr('y', function(d,i) {return 275 + (Math.floor(i/5))*50  } )
                          .classed('gameweek', true)
                  
-                         .text(function(d,i){ return Number(d)})
+                         .text(function(d,i){ return Number(d)+1})
                          .on('click', function(d, i){ pickteam( toggle_gameweek(Number(d)) )})
 
 
@@ -196,6 +196,8 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
 
 
         svg.selectAll("*").remove();
+
+
 
         svg.append('text')
             .attr('x', 370)
