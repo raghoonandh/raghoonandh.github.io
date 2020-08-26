@@ -56,7 +56,9 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
          $('#round').change(function(){
                     var value = $('#round').val();
                     curr_round = value
+                    $('#round').blur(); 
                     pickteam()
+
                     });
 
           $('#teamtype').change(function(){
@@ -65,7 +67,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
                     pickteam()
                     });
 
-          
+
          
 
 
@@ -238,7 +240,7 @@ x.add(option);
 
     function pickteam(mtype, round) {
     
-          $('#round').blur(); 
+     
       //console.log('here');
    
     // console.log('there', curr_type) 
