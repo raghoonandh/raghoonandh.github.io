@@ -47,6 +47,15 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
      //            pickteam();
      //        }
      //    }
+function zoomOutMobile() {
+  var viewport = document.querySelector('meta[name="viewport"]');
+  alert('Zoomout');
+  if ( viewport ) {
+    viewport.content = "initial-scale=0.1";
+    viewport.content = "width=1200";
+  }
+}
+
 
 
 
@@ -56,7 +65,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
          $('#round').change(function(){
                     var value = $('#round').val();
                     curr_round = value
-                    document.activeElement.blur();
+                    zoomOutMobile();
                     pickteam()
 
                     });
@@ -64,7 +73,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
           $('#teamtype').change(function(){
                     var value = $('#teamtype').val();
                     curr_type = value
-                    document.activeElement.blur();
+                    zoomOutMobile();
                     pickteam()
                     });
 
