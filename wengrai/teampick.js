@@ -49,7 +49,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
      //    }
 function zoomOutMobile() {
   var viewport = document.querySelector('meta[name="viewport"]');
-  alert('Zoomout');
+  alert('Zoomtest');
   if ( viewport ) {
     viewport.content = "initial-scale=0.1";
     viewport.content = "width=1200";
