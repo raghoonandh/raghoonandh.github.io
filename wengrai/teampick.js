@@ -28,7 +28,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     var curr_round =  3
     var curr_type = 'model_dream';
 
-    d3.csv("season201920-10kData.csv", function(data) {
+    d3.csv("Season2019-20.csv", function(data) {
       console.log(data.length);
    
 
