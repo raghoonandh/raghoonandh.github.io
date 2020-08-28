@@ -91,6 +91,13 @@ body
 
 }
 
+.announce
+{
+    color: #e34a33;
+    fill: #e34a33;
+    font-weight: bold;
+}
+
 
 .switch {
   position: relative;
@@ -130,6 +137,8 @@ body
   -webkit-transition: .4s;
   transition: .4s;
 }
+
+
 
 input:checked + .slider {
   background-color: #2196F3;

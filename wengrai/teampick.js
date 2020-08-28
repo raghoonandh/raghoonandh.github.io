@@ -30,7 +30,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     var curr_round =  3
     var curr_type = 'model_dream';
 
-    d3.csv("SeasonSimulation2019-20.csv", function(data) {
+    d3.csv("Wengerai-SeasonSim2019-20.csv", function(data) {
       
  
 
@@ -167,7 +167,7 @@ for (r = 0; r < rounds.length; r++)
 {
 var x = document.getElementById("round");
 var option = document.createElement("option");
-option.text = 'Gameweek ' + rounds[r]
+option.text = 'GW ' + rounds[r]
 option.value = rounds[r]
 x.add(option);
 }
@@ -251,9 +251,13 @@ x.add(option);
         curr_round = round| curr_round;
         curr_type =  mtype? mtype: curr_type;
        
-        gw_tex = 'Real Team'
-        if(curr_type=='model_dream')
-        gw_tex = 'Dream Team'
+        gw_tex = 'Wengr.ai Real Team'
+       if(curr_type=='model_dream')
+        gw_tex = 'Wengr.ai Dream Team'
+       if(curr_type=='transfer_dream')
+        gw_tex = 'Transfers In Dream Team'
+       if(curr_type=='selection_dream')
+        gw_tex = 'Selected By Dream Team'
 
 
         svg.selectAll("*").remove();
@@ -271,7 +275,7 @@ x.add(option);
         svg.append('text')
             .attr('x', 220)
             .attr('y', 15)
-            .text("Wengr.ai "+gw_tex)
+            .text(gw_tex)
             .classed('teamtype', true); 
 
     var filter_data  = data.filter(function(d){return d.round == curr_round  });
@@ -346,6 +350,7 @@ x.add(option);
             if(curr_player.captain == 1)
             points = points*2
             var player_name = curr_player.web_name
+            // console.log(curr_player)
             var namelength = player_name.length;
             
             var offset = 0;
