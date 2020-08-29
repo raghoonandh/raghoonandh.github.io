@@ -30,7 +30,7 @@ var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     var curr_round =  3
     var curr_type = 'model_dream';
 
-    d3.csv("Wengerai-SeasonSim2019-20.csv", function(data) {
+    d3.csv("WengerAiSeasonSimulation2019-20.csv", function(data) {
       
  
 
@@ -245,6 +245,7 @@ x.add(option);
     
      
       //console.log('here');
+
    
     // console.log('there', curr_type) 
     //   console.log('there',mtype)
@@ -281,7 +282,7 @@ x.add(option);
     var filter_data  = data.filter(function(d){return d.round == curr_round  });
           // console.log(filter_data);
        filter_data = filter_data.filter(function(d){return (d.type == curr_type)}) 
-       // console.log(filter_data)
+       console.log(filter_data)
 
 
 
@@ -386,7 +387,9 @@ x.add(option);
             .attr("height", 30)
             .attr("x",  220+(gk*300))
             .attr("y", 100)
-  
+
+
+
             }
 
 
@@ -439,6 +442,13 @@ x.add(option);
             .attr("height", 30)
             .attr("x",  70+(df*150))
             .attr("y", 270)
+
+            svg.append("text")
+            .attr("x",  105+(df*150))
+            .attr("y", 295)
+            .text(Number(curr_player.bench_order))
+            .classed('benchorder', true)
+  
             }
            
 
@@ -478,6 +488,13 @@ x.add(option);
             .attr("height", 30)
             .attr("x",  70+(mf*150))
             .attr("y", 450)
+
+             svg.append("text")
+            .attr("x",  105+(mf*150))
+            .attr("y", 475)
+            .text(Number(curr_player.bench_order))
+            .classed('benchorder', true)
+            
             }
 
                if(curr_player.captain == 1) 
@@ -485,6 +502,17 @@ x.add(option);
 
               svg.append("svg:image")
             .attr("xlink:href", 'jerseys/captain.svg')
+            .attr("width", 30)
+            .attr("height", 30)
+            .attr("x",  70+(mf*150))
+            .attr("y", 450)
+            }
+
+               if(curr_player.vice_captain == 1) 
+            {
+
+              svg.append("svg:image")
+            .attr("xlink:href", 'jerseys/vice_captain.svg')
             .attr("width", 30)
             .attr("height", 30)
             .attr("x",  70+(mf*150))
@@ -527,6 +555,13 @@ x.add(option);
             .attr("height", 30)
             .attr("x",  220+(fw*150))
             .attr("y", 630)
+
+
+            svg.append("text")
+            .attr("x",  255+(fw*150))
+            .attr("y", 655)
+            .text(Number(curr_player.bench_order))
+            .classed('benchorder', true)
             }
 
               if(curr_player.captain == 1) 
@@ -534,6 +569,17 @@ x.add(option);
 
               svg.append("svg:image")
             .attr("xlink:href", 'jerseys/captain.svg')
+            .attr("width", 30)
+            .attr("height", 30)
+            .attr("x",  220+(fw*150))
+            .attr("y", 630)
+            }
+
+              if(curr_player.vice_captain == 1) 
+            {
+
+              svg.append("svg:image")
+            .attr("xlink:href", 'jerseys/vice_captain.svg')
             .attr("width", 30)
             .attr("height", 30)
             .attr("x",  220+(fw*150))

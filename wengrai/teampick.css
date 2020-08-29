@@ -93,11 +93,19 @@ body
 
 .announce
 {
-    color: #3182bd;
-    fill: #e34a33;
+    color: #963DFF;
     font-weight: bold ;
 }
 
+.benchorder
+{
+
+
+    fill: #963DFF;
+    font-weight: bold ;
+    font-size: 16px;
+
+}
 
 .switch {
   position: relative;
