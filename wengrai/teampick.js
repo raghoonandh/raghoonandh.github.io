@@ -282,7 +282,7 @@ x.add(option);
     var filter_data  = data.filter(function(d){return d.round == curr_round  });
           // console.log(filter_data);
        filter_data = filter_data.filter(function(d){return (d.type == curr_type)}) 
-       console.log(filter_data)
+       // console.log(filter_data)
 
 
 
