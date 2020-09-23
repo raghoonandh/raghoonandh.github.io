@@ -29,8 +29,9 @@ function isInArray(value, array) {
 var divTooltip = d3.select("body").append("div").attr("class", "toolTip_div");
     var curr_round =  3
     var curr_type = 'model_dream';
-
-    d3.csv("WengerAiSeasonSimulation2019-20.csv", function(data) {
+    var sim_file = "WengerAiSeasonSimulation2019-20.csv"
+    var season_file = "WengrAiPredictions2020-21.csv"
+    d3.csv(season_file, function(data) {
       
  
 
@@ -288,10 +289,15 @@ x.add(option);
 
       var starters  = filter_data.filter(function(d){ return Number(d.starting)==1 })
       
-      var total_points = d3.sum(starters, d => d.total_points_nextgw) 
+      var total_points = d3.sum(starters, d => d.total_points_nextgw)
+
       var captain = starters.filter(function(d){ return Number(d.captain) == 1})
       
       total_points = total_points+Number(captain[0].total_points_nextgw)
+
+      if(total_points == 0)
+        total_points = '-'
+
       var total_budget =  d3.sum(filter_data, d => d.value)
       total_budget = total_budget/10 
     
@@ -350,7 +356,16 @@ x.add(option);
             var points = curr_player.total_points_nextgw;
             if(curr_player.captain == 1)
             points = points*2
+            
+            if(Number(points) == 0)
+              points = (curr_player.probability/100);
+              points =  points.toFixed(2)
+            var txt_offset=0
+            if ((points.toString().length) > 3)
+              txt_offset = -15
             var player_name = curr_player.web_name
+            var probability = curr_player.probability;
+           
             // console.log(curr_player)
             var namelength = player_name.length;
             
@@ -378,7 +393,7 @@ x.add(option);
             .attr("y", 50)
             .attr('title', 'test')
 
-            if(curr_player.starting == 0) 
+            if(curr_player.starting != 1) 
             {
 
               svg.append("svg:image")
@@ -393,8 +408,9 @@ x.add(option);
             }
 
 
+
                svg.append("text")
-            .attr("x",  185+(gk*300))
+            .attr("x",  txt_offset+185+(gk*300))
             .attr("y", 175)
             .classed('points', true)
             .text(Number(points))
@@ -427,7 +443,7 @@ x.add(option);
             .text(curr_player.web_name);
 
               svg.append("text")
-            .attr("x",  35+(df*150))
+            .attr("x",  txt_offset+35+(df*150))
             .attr("y", 345)
             .classed('points', true)
             .text(Number(points))
@@ -474,7 +490,7 @@ x.add(option);
             .text(curr_player.web_name);
 
               svg.append("text")
-            .attr("x",  35+(mf*150))
+            .attr("x",  txt_offset+35+(mf*150))
             .attr("y", 525)
             .classed('points', true)
             .text(Number(points))
@@ -541,7 +557,7 @@ x.add(option);
             .text(curr_player.web_name);
 
              svg.append('text')
-            .attr('x', 185+(fw*150))
+            .attr('x', txt_offset+185+(fw*150))
             .attr('y', 705)
             .classed('points', true)
             .text(Number(points));
