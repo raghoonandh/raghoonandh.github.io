@@ -295,6 +295,22 @@ x.add(option);
       
       total_points = total_points+Number(captain[0].total_points_nextgw)
 
+  
+
+      var played =  starters.filter(function(d){ return Number(d.minutes)>0 })
+      var from_bench = 11 - played.length
+  
+      if (from_bench)
+      {
+        console.log(from_bench)
+        var benchers = filter_data.filter(function(d){ return Number(d.starting)==0 })
+        var bench_in = benchers.filter(function(d){ return Number(d.bench_order)<=from_bench })
+        console.log(bench_in)
+        var bench_points = d3.sum(bench_in, d => d.total_points_nextgw)
+        console.log(bench_points)
+        total_points = total_points+bench_points
+      }
+
       if(total_points == 0)
         total_points = '-'
 
@@ -357,9 +373,11 @@ x.add(option);
             if(curr_player.captain == 1)
             points = points*2
             
-            if(Number(points) == 0)
+            if((Number(points) == 0 ) & (Number(curr_player.minutes) ==0) & (Number(curr_player.results) == 0))
+            {
               points = (curr_player.probability/100);
               points =  points.toFixed(2)
+            }
             var txt_offset=0
             if ((points.toString().length) > 3)
               txt_offset = -15
