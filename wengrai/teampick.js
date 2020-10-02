@@ -1,5 +1,5 @@
 
-var w = 830
+var w = 850
 var h = 720
 formation = [3,4,2]
 var svg = d3.select('#emojifootball')
@@ -357,6 +357,16 @@ x.add(option);
             .attr("y", 680)
             .on('click', function() {
              window.open('https://www.twitter.com/raghoonandh', '_blank');});
+
+
+              svg.append("svg:image")
+            .attr("xlink:href", 'medium.svg')
+            .attr("width", 35)
+            .attr("height", 35)
+            .attr("x",  815)
+            .attr("y", 680)
+            .on('click', function() {
+             window.open('https://medium.com/@raghunandh10', '_blank');});
 
            
 
