@@ -298,16 +298,28 @@ x.add(option);
   
 
       var played =  starters.filter(function(d){ return Number(d.minutes)>0 })
+      var played_def = played.filter(function(d){ return Number(d.element_type)==2})
+      var num_played_def = played_def.length
+      console.log(num_played_def);
       var from_bench = 11 - played.length
   
       if (from_bench)
       {
-        console.log(from_bench)
+
+        // console.log(from_bench)
         var benchers = filter_data.filter(function(d){ return Number(d.starting)==0 })
+
+        if(num_played_def >= 3)
         var bench_in = benchers.filter(function(d){ return Number(d.bench_order)<=from_bench })
-        console.log(bench_in)
+        else
+        {
+        var def_in = benchers.filter(function(d){ return Number(d.element_type)==2 })
+        var bench_in =  def_in.filter(function(d){ return Number(d.bench_order)<=from_bench })
+
+        }
+        // console.log(bench_in)
         var bench_points = d3.sum(bench_in, d => d.total_points_nextgw)
-        console.log(bench_points)
+        // console.log(bench_points)
         total_points = total_points+bench_points
       }
 
@@ -421,6 +433,20 @@ x.add(option);
             .attr("y", 50)
             .attr('title', 'test')
 
+              if(curr_player.minutes == 0) 
+            {
+
+            svg.append("svg:image")
+            .attr("xlink:href", 'downarrow.svg')
+            .attr("width", 10)
+            .attr("height", 10)
+            .attr("x",  250+(gk*300))
+            .attr("y", 180)
+
+
+
+            }
+
             if(curr_player.starting != 1) 
             {
 
@@ -464,6 +490,20 @@ x.add(option);
             .attr("x",  0+(df*150) )
             .attr("y", 220)
             .attr('title', 'test')
+
+            if(curr_player.minutes == 0) 
+            {
+
+            svg.append("svg:image")
+            .attr("xlink:href", 'downarrow.svg')
+            .attr("width", 20)
+            .attr("height", 20)
+            .attr("x",   80+(df*150))
+            .attr("y", 280)
+
+
+
+            }
 
              svg.append('text')
             .attr('x', 10+(df*150)+offset)
@@ -511,6 +551,20 @@ x.add(option);
             .attr("x",  0+(mf*150) )
             .attr("y", 400)
             .attr('title', 'test')
+
+             if(curr_player.minutes == 0 & curr_player.starting==1) 
+            {
+
+            svg.append("svg:image")
+            .attr("xlink:href", 'downarrow.svg')
+            .attr("width", 20)
+            .attr("height", 20)
+            .attr("x",   80+(mf*150))
+            .attr("y", 460)
+
+
+
+            }
 
             svg.append('text')
             .attr('x', 10+(mf*150)+offset)
