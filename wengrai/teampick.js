@@ -433,7 +433,7 @@ x.add(option);
             .attr("y", 50)
             .attr('title', 'test')
 
-              if(curr_player.minutes == 0) 
+              if(curr_player.minutes == 0 & curr_player.results == 1) 
             {
 
             svg.append("svg:image")
@@ -491,7 +491,7 @@ x.add(option);
             .attr("y", 220)
             .attr('title', 'test')
 
-            if(curr_player.minutes == 0) 
+            if(curr_player.minutes == 0 & curr_player.results == 1) 
             {
 
             svg.append("svg:image")
@@ -552,7 +552,7 @@ x.add(option);
             .attr("y", 400)
             .attr('title', 'test')
 
-             if(curr_player.minutes == 0 & curr_player.starting==1) 
+             if(curr_player.minutes == 0 & curr_player.starting==1 & curr_player.results == 1) 
             {
 
             svg.append("svg:image")
