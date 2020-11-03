@@ -300,25 +300,41 @@ x.add(option);
       var played =  starters.filter(function(d){ return Number(d.minutes)>0 })
       var played_def = played.filter(function(d){ return Number(d.element_type)==2})
       var num_played_def = played_def.length
-      console.log(num_played_def);
+      // console.log(num_played_def);
       var from_bench = 11 - played.length
+ 
   
       if (from_bench)
       {
 
         // console.log(from_bench)
         var benchers = filter_data.filter(function(d){ return Number(d.starting)==0 })
-
+        // console.log(benchers)
         if(num_played_def >= 3)
+        {
+      
+        
         var bench_in = benchers.filter(function(d){ return Number(d.bench_order)<=from_bench })
+        }
         else
         {
+          var from_bench_def = 3-num_played_def
+        
         var def_in = benchers.filter(function(d){ return Number(d.element_type)==2 })
-        var bench_in =  def_in.filter(function(d){ return Number(d.bench_order)<=from_bench })
+        var bench_in =  def_in.filter(function(d,i){ return i<from_bench_def })
+        if(from_bench > bench_in.length)
+        {
+        var  other_players =  benchers.filter(function(d){ return Number(d.element_type)>2 })
+        var other_in  =  other_players.filter(function(d,i){ return i<(from_bench-bench_in.length) })
+        console.log(other_in)
+        bench_in.push(other_in[0])
+        console.log(bench_in)
+      }
 
         }
         // console.log(bench_in)
         var bench_points = d3.sum(bench_in, d => d.total_points_nextgw)
+        console.log(bench_points)
         // console.log(bench_points)
         total_points = total_points+bench_points
       }
