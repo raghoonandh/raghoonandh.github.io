@@ -302,7 +302,7 @@ x.add(option);
       var num_played_def = played_def.length
       // console.log(num_played_def);
       var from_bench = 11 - played.length
- 
+      
   
       if (from_bench)
       {
@@ -313,11 +313,12 @@ x.add(option);
         if(num_played_def >= 3)
         {
       
-        
-        var bench_in = benchers.filter(function(d){ return Number(d.bench_order)<=from_bench })
+        console.log('here')
+        var bench_in = benchers.filter(function(d){ return (Number(d.bench_order)<=from_bench) & (Number(d.bench_order)>0) })
         }
         else
         {
+
           var from_bench_def = 3-num_played_def
         
         var def_in = benchers.filter(function(d){ return Number(d.element_type)==2 })
@@ -659,6 +660,24 @@ x.add(option);
             .attr('y', 705)
             .classed('points', true)
             .text(Number(points));
+
+               if(curr_player.minutes == 0 & curr_player.results == 1) 
+            {
+
+              console.log(curr_player.web_name)
+
+
+            svg.append("svg:image")
+            .attr("xlink:href", 'downarrow.svg')
+            .attr("width", 20)
+            .attr("height", 20)
+            .attr("x",  225+(fw*150))
+            .attr("y", 635)
+
+
+
+            }
+
 
                if(curr_player.starting == 0) 
             {
